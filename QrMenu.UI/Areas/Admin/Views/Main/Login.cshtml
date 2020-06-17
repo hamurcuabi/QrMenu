@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Giriş</title>
+
+    <link href="~/Areas/Admin/Temp/adminlte/assets/bootstrap//css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Admin Giriş</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="/Main/Login" method="post">
+                            <h3 class="text-center text-info">Giriş</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Kullanıcı Adı:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Şifre:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Giriş">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Areas/Admin/Temp/adminlte/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+
+
+</html>
+

@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.MODEL", "QrMenu.MODEL\QrMenu.MODEL.csproj", "{AAC4C105-877C-4DC7-A203-F5F5EA03D615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QrMenu.MODEL", "QrMenu.MODEL\QrMenu.MODEL.csproj", "{AAC4C105-877C-4DC7-A203-F5F5EA03D615}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.UI", "QrMenu.UI\QrMenu.UI.csproj", "{4332C2B2-7A29-42D1-A524-0E9BD158D936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.DAL", "QrMenu.DAL\QrMenu.DAL.csproj", "{74D10213-58B2-4D6E-BD1B-91386DA618F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.BLL", "QrMenu.BLL\QrMenu.BLL.csproj", "{D4AC0142-CCBF-412B-B20F-8B7A9F0C4D11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{AAC4C105-877C-4DC7-A203-F5F5EA03D615}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAC4C105-877C-4DC7-A203-F5F5EA03D615}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAC4C105-877C-4DC7-A203-F5F5EA03D615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4332C2B2-7A29-42D1-A524-0E9BD158D936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4332C2B2-7A29-42D1-A524-0E9BD158D936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4332C2B2-7A29-42D1-A524-0E9BD158D936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4332C2B2-7A29-42D1-A524-0E9BD158D936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74D10213-58B2-4D6E-BD1B-91386DA618F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D10213-58B2-4D6E-BD1B-91386DA618F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D10213-58B2-4D6E-BD1B-91386DA618F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D10213-58B2-4D6E-BD1B-91386DA618F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4AC0142-CCBF-412B-B20F-8B7A9F0C4D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4AC0142-CCBF-412B-B20F-8B7A9F0C4D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4AC0142-CCBF-412B-B20F-8B7A9F0C4D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4AC0142-CCBF-412B-B20F-8B7A9F0C4D11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
