@@ -1,0 +1,60 @@
+﻿@using QrMenu.MODEL
+@model Urun
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+     ICollection<Kategori> kategoriList = ViewBag.KategoriList as ICollection<Kategori>;
+
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Urun Güncelle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <input type="number" name="number" value="@Model.UrunId" hidden />
+                <input type="text" name="OldMedia" value="@Model.MediaPath" hidden />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="UrnAd">Kategori Adı</label>
+                        <input type="text" class="form-control" name="Ad" value="@Model.Ad" id="UrnAd">
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea class="form-control" rows="3" name="Aciklama">@Model.Aciklama</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select class="form-control select2" style="width: 100%;"  name="KategoriId">
+                            <option selected="selected" disabled>Kategori Seçin</option>
+                            @foreach (var item in kategoriList)
+                            {
+                                <option value="@item.KategoriId">@item.Ad</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Kategori Görseli</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" value="" name="MediaPath" id="KatMedia">
+                                <label class="custom-file-label" for="KatMedia"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>

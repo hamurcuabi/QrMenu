@@ -1,0 +1,41 @@
+﻿@using QrMenu.MODEL
+@model Kullanici
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+   
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Ürün Ekle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="Adi">Kullanıcı Adı</label>
+                        <input type="text" class="form-control" name="KullaniciAdi" id="Adi">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="Sifre">Kullanıcı Şifresi</label>
+                        <input type="text" class="form-control" name="Sifre" id="Sifre">
+                    </div>
+                    
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>

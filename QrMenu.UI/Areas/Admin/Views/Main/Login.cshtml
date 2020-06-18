@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -9,27 +8,28 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Admin Giriş</title>
-
-    <link href="~/Areas/Admin/Temp/adminlte/assets/bootstrap//css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Temp/js/jquery-3.2.1.min.js"></script>
+    <link href="~/Temp/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 
 <body>
     <div id="login">
+        @Html.Partial("_PartialMessage")
         <h3 class="text-center text-white pt-5">Admin Giriş</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="/Main/Login" method="post">
+                        <form id="login-form" class="form" action="/Admin/Giris" method="post">
                             <h3 class="text-center text-info">Giriş</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Kullanıcı Adı:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="KullaniciAdi" id="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Şifre:</label><br>
-                                <input type="password" name="password" id="password" class="form-control">
+                                <input type="password" autocomplete="on" name="Sifre" id="password" class="form-control">
                             </div>
                             <div class="form-group">
 
@@ -42,10 +42,8 @@
             </div>
         </div>
     </div>
-    <script src="~/Areas/Admin/Temp/adminlte/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Temp/js/bootstrap.min.js"></script>
 </body>
-
-
 
 </html>
 

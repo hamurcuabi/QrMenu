@@ -1,4 +1,8 @@
-﻿using System;
+﻿using QrMenu.BLL;
+using QrMenu.MODEL;
+using QrMenu.UI.Areas.Admin.Models;
+using QrMenu.UI.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,18 +10,57 @@ using System.Web.Mvc;
 
 namespace QrMenu.UI.Areas.Admin.Controllers
 {
+    [RouteArea("Admin")]
+    [Route("{action=AdminIndex}")]
     public class MainController : Controller
     {
         // GET: Admin/Main
-        
+        [Route]
+        [Route("anasayfa")]
+        [AdminFilter]
         public ActionResult Index()
+        {
+            KategoriMenuUrunKullaniciModel model = new KategoriMenuUrunKullaniciModel();
+            using (KategoriRepository repo = new KategoriRepository())
+            {
+                model.KategoriList = repo.GetList();
+            }
+            using (MenuRepository repo = new MenuRepository())
+            {
+                model.MenuList = repo.GetList();
+            }
+            using (UrunRepository repo = new UrunRepository())
+            {
+                model.UrunList = repo.GetList();
+            }
+            using (KullaniciRepository repo = new KullaniciRepository())
+            {
+                model.KullaniciList = repo.GetList();
+            }
+            return View(model);
+        }
+
+        [Route("Giris")]
+        public ActionResult Login()
         {
             return View();
         }
 
-        public ActionResult Login()
+        [HttpPost]
+        [Route("Giris")]
+        public ActionResult Login(Kullanici model)
         {
-            return View();
+            using (KullaniciRepository repo = new KullaniciRepository())
+            {
+                Kullanici superSu = repo.CheckUser(model);
+                if (superSu != null)
+                {
+                    Session["loginSU"] = superSu;
+                    return RedirectToAction("Index");
+                }
+                TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Hatalı kullanıcı Adı/Şifre" } };
+                return RedirectToAction("Login");
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace QrMenu.MODEL
         [StringLength(200)]
         public String Ad { get; set; }
         public String MediaPath { get; set; }
+        [StringLength(500)]
         public String Aciklama { get; set; }
         [DefaultValue(true)]
         public Boolean IsAktif { get; set; }

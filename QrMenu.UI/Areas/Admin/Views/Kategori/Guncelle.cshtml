@@ -1,0 +1,48 @@
+﻿@using QrMenu.MODEL
+@model Kategori
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Kategori Güncelle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <input type="number" name="number" value="@Model.KategoriId" hidden />
+                <input type="text" name="OldMedia" value="@Model.MediaPath" hidden />
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="KatAd">Kategori Adı</label>
+                        <input type="text" class="form-control" name="Ad" value="@Model.Ad" id="KatAd">
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea class="form-control" rows="3" name="Aciklama">@Model.Aciklama</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Kategori Görseli</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" value="" name="MediaPath" id="KatMedia">
+                                <label class="custom-file-label" for="KatMedia"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,47 @@
+﻿@using QrMenu.MODEL
+@model Kullanici
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ICollection<Kategori> kategoriList = ViewBag.KategoriList as ICollection<Kategori>;
+
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Kullanıcı Güncelle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <input type="number" name="number" value="@Model.KullaniciId" hidden />
+                
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="Adi">Kullanıcı Adı</label>
+                        <input type="text" class="form-control" name="KullaniciAdi" value="@Model.KullaniciId" id="Adi">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Sifre">Eski Sifre</label>
+                        <input type="password" class="form-control" name="Sifre" id="Sifre">
+                    </div>
+                    <div class="form-group">
+                        <label for="Sifre">Yeni Sifre</label>
+                        <input type="password" class="form-control" name="yeniSifre" id="Sifre">
+                    </div>
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>

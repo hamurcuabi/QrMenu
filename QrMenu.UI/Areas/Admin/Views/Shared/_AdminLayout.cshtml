@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/moment/moment.min.js"></script>
     <link rel="stylesheet" href="~/Areas/Admin/Temp/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="~/Areas/Admin/Temp/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -37,8 +37,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Temp/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    @RenderSection("AddProductCss", false)
 
+    <link href="~/Areas/Admin/Temp/adminlte/plugins/select2/css/select2.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -169,7 +169,7 @@
             <a href="/admin" class="brand-link">
                 <img src="~/Areas/Admin/Temp/adminlte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
-                <span class="brand-text font-weight-light">Fitkutu|Admin</span>
+                <span class="brand-text font-weight-light">QrMenu|Admin</span>
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
@@ -179,31 +179,13 @@
                         <img src="~/Areas/Admin/Temp/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="/admin" class="d-block">@user.FirstName @user.LastName</a>
+                        <a href="/admin" class="d-block">@user.KullaniciAdi </a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Anasayfa
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Admin" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Anasayfa</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
 
 
                         <li class="nav-item has-treeview">
@@ -216,15 +198,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("CategoryList","Category")" class="nav-link active">
+                                    <a href="@Url.Action("Liste","Kategori")" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kategori Listesi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("AddCategory","Category")" class="nav-link active">
+                                    <a href="@Url.Action("Ekle","Kategori")" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Kutu Ekle</p>
+                                        <p>Kategori Ekle</p>
                                     </a>
                                 </li>
 
@@ -241,15 +223,40 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="@Url.Action("Liste","Urun")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Urun Listesi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Ekle","Urun")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Urun Ekle</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-box-open"></i>
+                                <p>
+                                    Menüler
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
                                     <a href="@Url.Action("ProductList","Product")" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Kategori Listesi</p>
+                                        <p>Menü Listesi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("AddProduct","Product")" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Kutu Ekle</p>
+                                        <p>Menü Ekle</p>
                                     </a>
                                 </li>
 
@@ -257,6 +264,55 @@
                         </li>
 
 
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-box-open"></i>
+                                <p>
+                                    Kullanıcılar
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Liste","Kullanici")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Kullanıcı Listesi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Ekle","Kullanici")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Kullanıcı Ekle</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-box-open"></i>
+                                <p>
+                                    Menüler
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Liste","Menu")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Menü Listesi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Ekle","Menu")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Menü Ekle</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
 
                     </ul>
                 </nav>
@@ -300,9 +356,10 @@
     @*<script src="~/Areas/Admin/Temp/adminlte/plugins/moment/moment.min.js"></script>*@
     @*<script src="~/Areas/Admin/Temp/adminlte/plugins/moment/moment.min.js"></script>*@
     <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/moment/moment.min.js"></script>
     <script src="~/Areas/Admin/Temp/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Summernote -->
-    @*<script src="~/Areas/Admin/Temp/adminlte/plugins/summernote/summernote-bs4.min.js"></script>*@
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="~/Areas/Admin/Temp/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
@@ -312,11 +369,13 @@
     <!-- AdminLTE for demo purposes -->
     @*<script src="~/Areas/Admin/Temp/adminlte/dist/js/demo.js"></script>*@
     <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/select2/js/select2.full.js"></script>
     <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-
+    @RenderSection("kategoriJs", false)
+    @RenderSection("menuJs",false)
+    @RenderSection("urunEkleJs",false)
 </body>
 </html>
 

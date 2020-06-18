@@ -1,0 +1,73 @@
+﻿@using QrMenu.MODEL
+@model ICollection<Urun>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    @Html.Partial("_PartialMessage")
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Urun Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Kategorisi</th>
+                        <th>Aktif mi?</th>
+                        <th>Görsel</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Ad</td>
+                        <td>@item.Aciklama</td>
+                        <td>@item.Kategori.Ad</td>
+                        <td><input type="checkbox" name="isAktif" value="@item.IsAktif" disabled /></td>
+                        <td><img src="@item.MediaPath" alt="@item.Ad" width="50" /></td>
+                        <td>
+                            @Html.ActionLink("Sil", "Sil", new { id = item.UrunId, path = item.MediaPath }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Güncelle", "Guncelle", new { id = item.UrunId }, new { @class = "btn btn-primary" })
+                        </td>
+
+                    </tr>
+                    }
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Kategorisi</th>
+                        <th>Aktif mi?</th>
+                        <th>Görsel</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+
+
+@section kategoriJs{
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+        });
+    </script>
+}

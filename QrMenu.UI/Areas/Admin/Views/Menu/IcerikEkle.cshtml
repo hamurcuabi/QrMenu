@@ -1,0 +1,56 @@
+﻿@using QrMenu.MODEL
+@model Urun
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ICollection<Kategori> kategoriList = ViewBag.KategoriList as ICollection<Kategori>;
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Ürün Ekle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <div class="card-body">
+                    
+                   
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select class="form-control select2" style="width: 100%;" name="KategoriId" id="kategoriSec">
+                            <option selected="selected" disabled>Kategori Seçin</option>
+                            @foreach (var item in kategoriList)
+                            {
+                                <option value="@item.KategoriId">@item.Ad</option>
+                            }
+                        </select>
+                    </div>
+                  
+                    <div class="form-group">
+                        <label>Ürün</label>
+                        <select class="form-control select2" style="width: 100%;" id="urunSec" name="UrunId">
+                            <option selected="selected" disabled>Ürün Seçin</option>
+                            
+                        </select>
+                    </div>
+                    
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+@section urunEkleJs{
+    <script src="~/Areas/Admin/Temp/adminlte/assets/ms/js/ms.min.js"></script>
+}

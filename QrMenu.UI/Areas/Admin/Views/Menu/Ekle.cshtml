@@ -1,0 +1,74 @@
+﻿@using QrMenu.MODEL
+@model Menu
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ICollection<Urun> urunList = ViewBag.UrunList as ICollection<Urun>;
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Menü Ekle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ürün Adı</label>
+                        <input type="text" class="form-control" name="Ad" required id="UrnAd">
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea class="form-control" rows="3" name="Aciklama"></textarea>
+                    </div>
+                  
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" required name="Fiyat">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">₺</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Multiple</label>
+                        <select class="select2" multiple="multiple" required data-placeholder="Ürün Seçin" name="urunler" style="width: 100%;">
+                            @foreach (var item in urunList)
+                            {
+                                <option value="@item.UrunId">@item.Ad</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Ürün Görseli</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="images" id="UrnMedia">
+                                <label class="custom-file-label" for="exampleInputFile">Görsel Seç</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+@section menuJs{
+    
+    <script>
+
+        $(function () {
+            $('.select2').select2()
+        });
+    </script>
+}

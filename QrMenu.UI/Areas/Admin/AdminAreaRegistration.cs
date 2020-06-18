@@ -14,10 +14,13 @@ namespace QrMenu.UI.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+            context.Routes.MapMvcAttributeRoutes();
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Main", action = "Index", id = UrlParameter.Optional },
+                new[] { "QrMenu.UI.Areas.Admin.Controllers" }
+
             );
         }
     }

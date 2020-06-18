@@ -9,5 +9,10 @@ namespace QrMenu.BLL
 {
    public class KullaniciRepository:BaseRepository<Kullanici>
     {
+        public Kullanici CheckUser(Kullanici model)
+        {
+            var result = GetOne(f => f.KullaniciAdi == model.KullaniciAdi && f.Sifre == model.Sifre);
+            return result;
+        }
     }
 }

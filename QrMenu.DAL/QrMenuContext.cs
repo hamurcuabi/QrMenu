@@ -28,6 +28,7 @@ namespace QrMenu.DAL
         public virtual DbSet<Kullanici> Kullanici { get; set; }
         public virtual DbSet<Urun> Urun { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<MenuUrun> MenuUrun { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -56,8 +56,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -1925,19 +1925,26 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\KategoriController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KullaniciController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UrunController.cs" />
+    <Compile Include="Areas\Admin\Models\KategoriMenuUrunKullaniciModel.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AdminFilter.cs" />
+    <Compile Include="Helpers\FileNamer.cs" />
+    <Compile Include="Helpers\ImageSaver.cs" />
+    <Compile Include="Models\KategoriMenuUrunModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
@@ -2120,6 +2127,22 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\summernote\summernote.min.js.map" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.js.map" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Urun\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Urun\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Urun\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\IcerikListe.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\IcerikEkle.cshtml" />
     <None Include="packages.config" />
     <Content Include="Temp\css\.DS_Store" />
     <Content Include="Temp\css\bootstrap\.DS_Store" />
@@ -2232,6 +2255,7 @@
     <Content Include="Temp\scss\style.scss" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Temp\images\.DS_Store" />
+    <Content Include="Views\Shared\_PartialMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2241,16 +2265,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QrMenu.BLL\QrMenu.BLL.csproj">
       <Project>{d4ac0142-ccbf-412b-b20f-8b7a9f0c4d11}</Project>
       <Name>QrMenu.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QrMenu.MODEL\QrMenu.MODEL.csproj">
-      <Project>{aac4c105-877c-4dc7-a203-f5f5ea03d615}</Project>
+    <ProjectReference Include="..\QrMenu.MODEL2\QrMenu.MODEL.csproj">
+      <Project>{28db6805-d0a6-4a63-ab6c-8f255fcbbdb0}</Project>
       <Name>QrMenu.MODEL</Name>
     </ProjectReference>
   </ItemGroup>
