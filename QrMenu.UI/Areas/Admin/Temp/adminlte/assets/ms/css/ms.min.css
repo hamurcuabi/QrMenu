@@ -1,0 +1,40 @@
+﻿@media only screen and (min-device-width:769px) {
+    .col-ms-lg-6 {
+        width:45%!important;
+        
+        margin-left:3%!important;
+    }
+    .logo{
+        margin-left:50%!important;
+    }
+
+}
+@media only screen and (max-device-width:769px) {
+    .dish-menu .menus .text .one-forth .price {
+        font-size: 20px !important;
+        color: #404044 !important;
+        line-height: 3.4 !important;
+    }
+
+    .logo img{
+        width:100%!important;
+    }
+}
+    .dish-menu .menus .text {
+        width: 100% !important;
+    }
+
+        .dish-menu .menus .text span {
+            margin-left: -20% !important
+        }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+    .w-0{
+        width:unset!important;
+    }
+
+.custom-file-label::after{
+    content:"Gözat"!important;
+}

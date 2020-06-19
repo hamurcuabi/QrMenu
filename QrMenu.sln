@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.DAL", "QrMenu.DAL\Qr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.BLL", "QrMenu.BLL\QrMenu.BLL.csproj", "{D4AC0142-CCBF-412B-B20F-8B7A9F0C4D11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.MODEL", "QrMenu.MODEL2\QrMenu.MODEL.csproj", "{28DB6805-D0A6-4A63-AB6C-8F255FCBBDB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrMenu.MODEL", "QrMenu.MODEL\QrMenu.MODEL.csproj", "{28DB6805-D0A6-4A63-AB6C-8F255FCBBDB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

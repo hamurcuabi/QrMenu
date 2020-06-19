@@ -1,5 +1,5 @@
 ﻿@using QrMenu.MODEL
-@model Urun
+@model MenuUrun
 @{
     ViewBag.Title = "Ekle";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -16,7 +16,7 @@
             <!-- form start -->
             <form enctype="multipart/form-data" method="post" action="">
                 <div class="card-body">
-                    
+                    <input type="number" name="MenuId" value="@ViewBag.MenuId" hidden/>
                    
                     <div class="form-group">
                         <label>Kategori</label>

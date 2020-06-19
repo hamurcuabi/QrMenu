@@ -1,0 +1,102 @@
+﻿@using QrMenu.MODEL
+@model IsletmeAyar
+@{
+    ViewBag.Title = "Ayar";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+}
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">İşletme Ayarları</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="isletmeAd">İşletme Adı</label>
+                        <input type="text" class="form-control" name="Ad" id="isletmeAd" value="@(Model?.Ad)">
+                    </div>
+                    <div class="form-group">
+                        <label>İşletme Adresi</label>
+                        <textarea class="form-control" rows="3" name="Adres">@(Model?.Adres)</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            </div>
+                            <input type="tel" value="@(Model?.TelNo)" class="form-control" data-inputmask='"mask":"(999) 999-99-99"' data-mask="" im-insert="true">
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+                            </div>
+                            <input type="email" class="form-control" value="@(Model?.Email)" name="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-facebook"></i></span>
+                            </div>
+                            <input type="text" value="@(Model?.Facebook)" class="form-control" name="Facebook">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+                            </div>
+                            <input type="text" class="form-control" value="@(Model?.Instagram)" name="Instagram">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+                            </div>
+                            <input type="text" class="form-control" value="@(Model?.Twitter)" name="Twitter">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputFile">işletme Logosu</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="images" id="UrnMedia">
+                                <label class="custom-file-label" for="exampleInputFile">Logo Seç</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+@section ayarJs{
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+    <script>
+
+        $(":input").inputmask();
+
+        $("#TelNo").inputmask({ "mask": "(999) 999-9999" });
+    </script>
+}

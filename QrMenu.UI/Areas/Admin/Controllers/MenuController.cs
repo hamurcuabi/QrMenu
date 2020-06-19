@@ -192,13 +192,36 @@ namespace QrMenu.UI.Areas.Admin.Controllers
 
 
         [AdminFilter]
-        public ActionResult IcerikEkle()
+        public ActionResult IcerikEkle(int id)
         {
+            ViewBag.MenuId = id;
             using (KategoriRepository repo = new KategoriRepository())
             {
                 ViewBag.KategoriList = repo.GetList();
             }
             return View();
+        }
+
+        [AdminFilter]
+        [HttpPost]
+        public ActionResult IcerikEkle(MenuUrun model)
+        {
+            using (MenuUrunRepository repo = new MenuUrunRepository())
+            {
+                using (MenuRepository repo2 = new MenuRepository())
+                {
+                    model.Menu = repo2.GetOne(f => f.MenuId == model.MenuId);
+                }
+                using (UrunRepository repo3 = new UrunRepository())
+                {
+                    model.Urun = repo3.GetOne(f => f.UrunId == model.UrunId);
+                }
+                bool result=repo.Create(model);
+                
+                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", $"{model.Menu.Ad} Menüsüne {model.Urun.Ad} ürünü eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", $"{model.Menu.Ad} Menüsüne {model.Urun.Ad} ürünü eklenemedi." } };
+                return RedirectToAction("Liste");
+            }
+            
         }
     }
 

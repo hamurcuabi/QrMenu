@@ -1,0 +1,196 @@
+﻿@using QrMenu.UI.Models
+@using QrMenu.MODEL
+@model KategoriMenuUrunModel
+@{
+    Layout = null;
+
+
+}
+@{
+    ICollection<MenuUrun> menuUrunList = ViewBag.MenuUrunList as ICollection<MenuUrun>;
+    IsletmeAyar isletmeAyar = ViewBag.IsletmeAyar as IsletmeAyar;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>QrMenu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    <link rel="stylesheet" href="/Temp/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/Temp/css/animate.css">
+
+    <link rel="stylesheet" href="/Temp/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Temp/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Temp/css/magnific-popup.css">
+    <link href="~/Areas/Admin/Temp/adminlte/assets/ms/css/ms.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Temp/css/aos.css">
+
+    <link rel="stylesheet" href="/Temp/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/Temp/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/Temp/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="/Temp/css/flaticon.css">
+    <link rel="stylesheet" href="/Temp/css/icomoon.css">
+    <link rel="stylesheet" href="/Temp/css/style.css">
+</head>
+<body>
+
+
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-2" style="text-align:center">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <span class="subheading">@(isletmeAyar?.Ad ?? "İşletme Adı")</span>
+                    
+
+                </div>
+                <div class="col-12">
+                    <img src="@(isletmeAyar?.LogoUri??"/Temp/images/about-2.jpg")" width="200"  style="border-radius:50px" alt="@(isletmeAyar?.Ad)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 dish-menu">
+
+                    <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                        @foreach (var item in Model.KategoriList)
+                        {
+                            <a class="nav-link py-3 px-4 cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span> @item.Ad</a>
+                        }
+                        <a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>
+
+
+                    </div>
+
+                    <div class="tab-content py-5" id="v-pills-tabContent">
+                        @foreach (var kategori in Model.KategoriList)
+                        {
+                            <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <div class="row">
+                                    @foreach (var urun in Model.UrunList.Where(f => f.KategoriId == kategori.KategoriId))
+                                    {
+
+                                        <div class="menus d-flex ftco-animate col-ms-lg-6" style="border-radius:10px">
+                                            <div class="menu-img" style="background-image: url(@urun.MediaPath);"></div>
+                                            <div class="text d-flex">
+                                                <div class="one-half">
+                                                    <h3 style="text-align:center;margin-left:-30px">@urun.Ad</h3>
+                                                    <p style="text-align:center;margin-left:-30px">@urun.Aciklama</p>
+                                                </div>
+                                                <div class="one-forth w-0">
+                                                    <span class="price">@urun.Fiyat.ToString("C")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    }
+                                </div>
+                            </div>
+
+                        }
+
+                        <div class="tab-pane fade active show " id="menu" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="row">
+                                @foreach (var item in Model.MenuList)
+                                {
+
+                                    <div class="menus d-flex ftco-animate col-lg-12" style="border-radius:10px">
+                                        <div class="menu-img" style="background-image: url(@item.MediaPath);"></div>
+                                        <div class="text d-flex">
+                                            <div class="one-half">
+                                                <h3 style="text-align:center;margin-left:-30px">@item.Ad</h3>
+
+                                                <p style="text-align:center;margin-left:-30px">
+                                                    @foreach (var item2 in menuUrunList.Where(f => f.MenuId == item.MenuId))
+                                                    {
+                                                        <span>
+                                                            @item2.Urun.Ad
+                                                        </span>
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div class="one-forth">
+                                                <span class="price">@item.Fiyat.ToString("C")</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">@(isletmeAyar?.Ad)</h2>
+                        
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+                            <li class="ftco-animate fadeInUp ftco-animated"><a href="@(isletmeAyar?.Twitter)"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate fadeInUp ftco-animated"><a href="@(isletmeAyar?.Facebook)"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate fadeInUp ftco-animated"><a href="@(isletmeAyar?.Instagram)"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+              
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">İletişim Bilgileri</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="http://maps.google.com/?q= @(isletmeAyar?.Adres)" class="py-2 d-block">@(isletmeAyar?.Adres)</a></li>
+                            <li><a href="tel:@(isletmeAyar?.TelNo)" class="py-2 d-block">@(isletmeAyar?.TelNo)</a></li>
+                            <li><a href="mailto:@(isletmeAyar?.Email)"class="py-2 d-block">@(isletmeAyar?.Email)</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </footer>
+   
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+    <script src="/Temp/js/jquery.min.js"></script>
+    <script src="/Temp/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/Temp/js/popper.min.js"></script>
+    <script src="/Temp/js/bootstrap.min.js"></script>
+    <script src="/Temp/js/jquery.easing.1.3.js"></script>
+    <script src="/Temp/js/jquery.waypoints.min.js"></script>
+    <script src="/Temp/js/jquery.stellar.min.js"></script>
+    <script src="/Temp/js/owl.carousel.min.js"></script>
+    <script src="/Temp/js/jquery.magnific-popup.min.js"></script>
+    <script src="/Temp/js/aos.js"></script>
+    <script src="/Temp/js/jquery.animateNumber.min.js"></script>
+    <script src="/Temp/js/bootstrap-datepicker.js"></script>
+    <script src="/Temp/js/jquery.timepicker.min.js"></script>
+
+
+    <script src="/Temp/js/main.js"></script>
+
+
+</body>
+</html>
