@@ -27,5 +27,11 @@ namespace QrMenu.BLL
             }
             return eklenemeyenler;
         }
+
+        public bool IsletmeUrunSil(int urunId,int isletmeId)
+        {
+            IsletmeUrun isletmeUrun = GetOne(f => f.UrunId == urunId && f.KullaniciId == isletmeId);
+            return Delete(isletmeUrun.KullaniciUrunId);
+        }
     }
 }

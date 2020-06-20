@@ -47,7 +47,7 @@
                                 <td><input type="checkbox" name="isAktif" value="@item.Urun.IsAktif" disabled /></td>
                                 <td><img src="@item.Urun.MediaPath" alt="@item.Urun.Ad" width="50" /></td>
                                 <td>
-                                    @Html.ActionLink("Sil", "IsletmeUrunSil", new { id = item.UrunId, path = item.Urun.MediaPath }, new { @class = "btn btn-danger" })
+                                    @Html.ActionLink("Sil", "IsletmeUrunSil", new { id = item.KullaniciUrunId }, new { @class = "btn btn-danger" })
                                    
                                 </td>
 

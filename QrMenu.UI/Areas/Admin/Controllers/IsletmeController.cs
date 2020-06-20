@@ -76,30 +76,31 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
-        public ActionResult IsletmeUrunListe()
+        public ActionResult IsletmeUrunListe(int? id)
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
-            using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
+            if (id == null)
             {
-                ICollection<IsletmeUrun> model = repo.IsletmeninUrunleri(kullanici.KullaniciId);
-                return View(model);
+                Kullanici kullanici = Session["loginSU"] as Kullanici;
+                using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
+                {
+                    ICollection<IsletmeUrun> model = repo.IsletmeninUrunleri(kullanici.KullaniciId);
+                    return View(model);
+                }
             }
+            else
+            {
+                using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
+                {
+                    ICollection<IsletmeUrun> model = repo.IsletmeninUrunleri((int)id);
+                    return View(model);
+                }
 
+
+            }
         }
 
 
-        [AdminFilter]
-        [HttpGet]
-        public ActionResult IsletmeUrunListe(int id)
-        {
-            
-            using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
-            {
-                ICollection<IsletmeUrun> model = repo.IsletmeninUrunleri(id);
-                return View(model);
-            }
-
-        }
+       
 
         [AdminFilter]
         public ActionResult IsletmeUrunSil(int id)
