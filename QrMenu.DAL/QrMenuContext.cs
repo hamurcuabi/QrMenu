@@ -31,6 +31,7 @@ namespace QrMenu.DAL
         public virtual DbSet<IsletmeAyar> IsletmeAyar { get; set; }
 
         public virtual DbSet<MenuUrun> MenuUrun { get; set; }
+        public virtual DbSet<IsletmeUrun> IsletmeUrun { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

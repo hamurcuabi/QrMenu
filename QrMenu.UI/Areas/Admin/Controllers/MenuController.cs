@@ -14,6 +14,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
     {
         // GET: Admin/Menu
         [AdminFilter]
+        [UserFilter]
         public ActionResult Liste()
         {
             using (MenuRepository repo = new MenuRepository())
@@ -24,6 +25,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Ekle()
         {
@@ -36,6 +38,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
         [HttpPost]
         public ActionResult Ekle(Menu model, HttpPostedFileBase[] images, int[] urunler)
         {
@@ -80,6 +83,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             }
         }
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Sil(int id, string path)
         {
@@ -98,6 +102,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             }
         }
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Guncelle(int id)
         {
@@ -113,6 +118,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Guncelle(int number,Menu model, HttpPostedFileBase[] images, int[] urunler,string oldImage)
         {
@@ -158,6 +164,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult IcerikListe(int id)
         {
@@ -175,6 +182,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             }
         }
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult IcerikSil(int id,int number)
         {
@@ -191,6 +199,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult IcerikEkle(int id)
         {
@@ -203,6 +212,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
         [HttpPost]
         public ActionResult IcerikEkle(MenuUrun model)
         {

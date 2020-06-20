@@ -1,5 +1,6 @@
 ﻿@using QrMenu.MODEL
-@using System.Web.Optimization
+
+
 @{
 
     Kullanici user = Session["loginSU"] as Kullanici;
@@ -10,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Fitkutu | Admin</title>
+    <title>QrMenu | Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -18,7 +19,7 @@
     <link href="~/Areas/Admin/Temp/adminlte/plugins/fontawesome-free-5.13.1-web/css/all.css" rel="stylesheet" />
 
     
-    @*<link rel="stylesheet" href="~/Areas/Admin/Temp/adminlte/plugins/fontawesome-free/css/all.min.css">*@
+   
     <!-- Ionicons -->
 
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -41,7 +42,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="~/Areas/Admin/Temp/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Temp/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
+    <link href="~/Areas/Admin/Temp/adminlte/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Temp/adminlte/plugins/select2/css/select2.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -57,7 +58,7 @@
                     <a href="/admin" class="nav-link">Anasayfa</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/admin/cikis" class="nav-link">Çıkış</a>
+                    <a href="/admin/logout" class="nav-link">Çıkış</a>
                 </li>
 
             </ul>
@@ -88,114 +89,146 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-box-open"></i>
-                                <p>
-                                    Kategoriler
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Liste","Kategori")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kategori Listesi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Ekle","Kategori")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kategori Ekle</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-box-open"></i>
-                                <p>
-                                    Ürünler
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Liste","Urun")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Urun Listesi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Ekle","Urun")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Urun Ekle</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-box-open"></i>
-                                <p>
-                                    Menüler
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Liste","Menu")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Menü Listesi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Ekle","Menu")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Menü Ekle</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-box-open"></i>
-                                <p>
-                                    Kullanıcılar
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Liste","Kullanici")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kullanıcı Listesi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Ekle","Kullanici")" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Kullanıcı Ekle</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("Ayar","Isletme")" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>İşletme Ayarları</p>
-                            </a>
-                        </li>
+                        @if (user.Yetki == (int)EnumYetki.Admin)
+                        {
 
 
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-box-open"></i>
+                                    <p>
+                                        Kategoriler
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Liste","Kategori")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Kategori Listesi</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Ekle","Kategori")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Kategori Ekle</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-box-open"></i>
+                                    <p>
+                                        Ürünler
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Liste","Urun")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Urun Listesi</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Ekle","Urun")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Urun Ekle</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            @*<li class="nav-item has-treeview">
+             <a href="#" class="nav-link">
+                 <i class="nav-icon fas fa-box-open"></i>
+                 <p>
+                     Menüler
+                     <i class="right fas fa-angle-left"></i>
+                 </p>
+             </a>
+            <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                     <a href="@Url.Action("Liste","Menu")" class="nav-link active">
+                         <i class="far fa-circle nav-icon"></i>
+                         <p>Menü Listesi</p>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="@Url.Action("Ekle","Menu")" class="nav-link active">
+                         <i class="far fa-circle nav-icon"></i>
+                         <p>Menü Ekle</p>
+                     </a>
+                 </li>
+
+             </ul>
+                            </li>*@
+
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-box-open"></i>
+                                    <p>
+                                        İşletmeler
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Liste","Kullanici")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>İşletme Listesi</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Ekle","Kullanici")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>İşletme Ekle</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            @*<li class="nav-item">
+                <a href="@Url.Action("Ayar","Isletme")" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>İşletme Ayarları</p>
+                </a>
+            </li>*@
+
+                        }
+                        else
+                        {
+
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-box-open"></i>
+                                    <p>
+                                        İşletme Ürün
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("IsletmeUrunListe","Isletme")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Ürün Listesi</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("IsletmeUrunEkle","Isletme")" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Ürün Ekle</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        }
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -260,6 +293,7 @@
     @RenderSection("menuJs", false)
     @RenderSection("urunEkleJs", false)
     @RenderSection("ayarJs", false)
+    @RenderSection("isletmeUrunEkleJs",false)
 
 </body>
 </html>

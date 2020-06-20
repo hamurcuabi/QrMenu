@@ -1,7 +1,7 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +57,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -69,11 +73,23 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -87,26 +103,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Deployment">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -2512,24 +2510,6 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-brands-400.svg" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-solid-900.svg" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\all.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\all.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\brands.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\brands.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\font-awesome.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\fontawesome.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\fontawesome.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\regular.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\regular.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\solid.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\solid.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\svg-with-js.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\svg-with-js.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\v4-shims.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\css\v4-shims.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-brands-400.svg" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-regular-400.svg" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-solid-900.svg" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\LICENSE.txt" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.css" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.esm.js" />
@@ -3455,6 +3435,29 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png.png" />
+    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png18062020_125630.png" />
+    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png18062020_130054.png" />
+    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png18062020_130232.png" />
+    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png19062020_205007.png" />
+    <Content Include="Medias\Bodrum_Menu\Bodrum_Menu_1_png.png" />
+    <Content Include="Medias\Domates\Domates_3_png.png" />
+    <Content Include="Medias\Fanta\Fanta_banner1_jpg.jpg" />
+    <Content Include="Medias\Kadayif\Kadayif_16_png.png" />
+    <Content Include="Medias\Kapuska\Kapuska_2_png.png" />
+    <Content Include="Medias\Karni_Yarik\Karni_Yarik_30_png.png" />
+    <Content Include="Medias\kutu_kola\kutu_kola_6_png.png" />
+    <Content Include="Medias\Manti\Manti_5_png.png" />
+    <Content Include="Medias\Merve_Sozen\Merve_Sozen_21_png.png" />
+    <Content Include="Medias\Motin_Steel\Motin_Steel_002-user-01_png.png" />
+    <Content Include="Medias\ogrenci_menu\ogrenci_menu_6_png.png" />
+    <Content Include="Medias\Sefi_Corbasi\Sefi_Corbasi_002-user-01_png.png" />
+    <Content Include="Medias\Sehriye\Sehriye_2_png.png" />
+    <Content Include="Medias\Supangle\Supangle_9_png.png" />
+    <Content Include="Medias\Sutlac\Sutlac_18_png.png" />
+    <Content Include="Medias\Tavuk_Sote\Tavuk_Sote_10_png.png" />
+    <Content Include="Medias\urun_3_\urun_3__8_png.png" />
+    <Content Include="Medias\urun_adi\urun_adi_5_png.png" />
     <Content Include="Temp\css\ajax-loader.gif" />
     <Content Include="Temp\css\animate.css" />
     <Content Include="Temp\css\aos.css" />
@@ -3544,6 +3547,7 @@
     <Content Include="Temp\js\bootstrap-datepicker.js" />
     <Content Include="Temp\js\bootstrap.min.js" />
     <Content Include="Temp\js\google-map.js" />
+    <Content Include="Temp\js\instascan.min.js" />
     <Content Include="Temp\js\jquery-3.2.1.min.js" />
     <Content Include="Temp\js\jquery-migrate-3.0.1.min.js" />
     <Content Include="Temp\js\jquery.animateNumber.min.js" />
@@ -3576,13 +3580,16 @@
     <Compile Include="Helpers\AdminFilter.cs" />
     <Compile Include="Helpers\FileNamer.cs" />
     <Compile Include="Helpers\ImageSaver.cs" />
+    <Compile Include="Helpers\UserFilter.cs" />
     <Compile Include="Models\KategoriMenuUrunModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
@@ -3707,18 +3714,6 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\daterangepicker\example\browserify\README.md" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\ekko-lightbox\ekko-lightbox.js.map" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\ekko-lightbox\ekko-lightbox.min.js.map" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-brands-400.eot" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-brands-400.ttf" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-brands-400.woff" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-brands-400.woff2" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-regular-400.eot" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-regular-400.ttf" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-regular-400.woff" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-regular-400.woff2" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-solid-900.eot" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-solid-900.ttf" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-solid-900.woff" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.js.map" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-daygrid\main.js.map" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-interaction\main.js.map" />
@@ -3765,23 +3760,6 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\summernote\summernote.min.js.map" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.js.map" />
-    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Kategori\Liste.cshtml" />
-    <Content Include="Areas\Admin\Views\Kategori\Ekle.cshtml" />
-    <Content Include="Areas\Admin\Views\Kategori\Guncelle.cshtml" />
-    <Content Include="Areas\Admin\Views\Urun\Liste.cshtml" />
-    <Content Include="Areas\Admin\Views\Urun\Ekle.cshtml" />
-    <Content Include="Areas\Admin\Views\Urun\Guncelle.cshtml" />
-    <Content Include="Areas\Admin\Views\Menu\Ekle.cshtml" />
-    <Content Include="Areas\Admin\Views\Kullanici\Liste.cshtml" />
-    <Content Include="Areas\Admin\Views\Kullanici\Ekle.cshtml" />
-    <Content Include="Areas\Admin\Views\Kullanici\Guncelle.cshtml" />
-    <Content Include="Areas\Admin\Views\Menu\Liste.cshtml" />
-    <Content Include="Areas\Admin\Views\Menu\Guncelle.cshtml" />
-    <Content Include="Areas\Admin\Views\Menu\IcerikListe.cshtml" />
-    <Content Include="Areas\Admin\Views\Menu\IcerikEkle.cshtml" />
-    <Content Include="Areas\Admin\Views\Isletme\Ayar.cshtml" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-brands-400.eot" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-brands-400.ttf" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-brands-400.woff" />
@@ -3794,6 +3772,28 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-solid-900.ttf" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-solid-900.woff" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\fontawesome-free-5.13.1-web\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\Isletme\Ayar.cshtml" />
+    <Content Include="Areas\Admin\Views\Isletme\IsletmeUrunListe.cshtml" />
+    <Content Include="Areas\Admin\Views\Isletme\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\IcerikEkle.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\IcerikListe.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Urun\Ekle.cshtml" />
+    <Content Include="Areas\Admin\Views\Urun\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Urun\Liste.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Isletme\IsletmeUrunEkle.cshtml" />
     <None Include="packages.config" />
     <Content Include="Temp\css\.DS_Store" />
     <Content Include="Temp\css\bootstrap\.DS_Store" />
@@ -3905,8 +3905,11 @@
     <Content Include="Temp\scss\bootstrap\_variables.scss" />
     <Content Include="Temp\scss\style.scss" />
     <Content Include="Temp\images\.DS_Store" />
-    <Content Include="Views\Shared\_PartialMessage.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialMessage.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\Home\Landing.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3916,16 +3919,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QrMenu.BLL\QrMenu.BLL.csproj">
-      <Project>{d4ac0142-ccbf-412b-b20f-8b7a9f0c4d11}</Project>
-      <Name>QrMenu.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QrMenu.MODEL\QrMenu.MODEL.csproj">
-      <Project>{28db6805-d0a6-4a63-ab6c-8f255fcbbdb0}</Project>
-      <Name>QrMenu.MODEL</Name>
-    </ProjectReference>
+    <Folder Include="Medias\Ogrenci_Menusu\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.d.ts" />
@@ -3937,9 +3931,31 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QrMenu.BLL\QrMenu.BLL.csproj">
+      <Project>{d4ac0142-ccbf-412b-b20f-8b7a9f0c4d11}</Project>
+      <Name>QrMenu.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QrMenu.MODEL\QrMenu.MODEL.csproj">
+      <Project>{28db6805-d0a6-4a63-ab6c-8f255fcbbdb0}</Project>
+      <Name>QrMenu.MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
@@ -3967,9 +3983,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

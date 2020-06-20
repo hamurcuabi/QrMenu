@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Landing</title>
+    <script src="~/Temp/js/instascan.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div style="text-align:center">
+                <video class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-6" style="border:1px solid blue;" id="preview"></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      
+            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+            scanner.addListener('scan', function (content) {
+                console.log(content);
+            });
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('No cameras found.');
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+       
+    </script>
+
+</body>
+</html>

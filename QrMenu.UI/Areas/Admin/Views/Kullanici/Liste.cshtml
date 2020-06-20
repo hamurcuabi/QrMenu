@@ -32,6 +32,7 @@
                             <td>
                                 @Html.ActionLink("Sil", "Sil", new { id = item.KullaniciId}, new { @class = "btn btn-danger" })
                                 @Html.ActionLink("Güncelle", "Guncelle", new { id = item.KullaniciId }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("İşletme Ürünleri", "IsletmeUrunListe", "Isletme", new { id = item.KullaniciId }, new { @class = "btn btn-warning" })
                             </td>
 
                         </tr>

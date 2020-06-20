@@ -14,6 +14,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
     {
         // GET: Admin/Kullanici
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Liste()
         {
             using (KullaniciRepository repo = new KullaniciRepository())
@@ -24,6 +26,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Ekle()
         {
@@ -33,24 +36,28 @@ namespace QrMenu.UI.Areas.Admin.Controllers
            
         }
         [AdminFilter]
+        [UserFilter]
         [HttpPost]
         public ActionResult Ekle(Kullanici model)
         {
             using (KullaniciRepository repo = new KullaniciRepository())
             {
+                
+                model.Sifre = Guid.NewGuid().ToString();
                 bool result = repo.Create(model);
-                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Ürün eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Ürün eklenemedi." } };
+                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kullanıcı eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kullanıcı eklenemedi." } };
                 return RedirectToAction("Liste");
             }
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Sil(int id, string path)
         {
-            using (UrunRepository repo = new UrunRepository())
+            using (KullaniciRepository repo = new KullaniciRepository())
             {
-
+               
                 bool result = repo.Delete(id);
                
                     TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kullanıcı silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kullanıcı silinemedi"} };
@@ -61,15 +68,21 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        
         [AdminFilter]
         public ActionResult Guncelle(int id)
         {
-            using (KullaniciRepository repo = new KullaniciRepository())
+            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            if (id==kullanici.KullaniciId)
             {
-                Kullanici model = repo.GetOne(f => f.KullaniciId == id);
-                
-                return View(model);
+                using (KullaniciRepository repo = new KullaniciRepository())
+                {
+                    Kullanici model = repo.GetOne(f => f.KullaniciId == id);
+
+                    return View(model);
+                }
             }
+            return RedirectToAction("Index", "Main");
 
 
 
@@ -79,7 +92,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Guncelle(Kullanici model,string yeniSifre)
         {
-            if (model.Sifre!=yeniSifre)
+            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            if (model.Sifre != kullanici.Sifre)
             {
                 TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Şifre Hatalı" } };
                 return RedirectToAction("Guncelle",new {id=model.KullaniciId });

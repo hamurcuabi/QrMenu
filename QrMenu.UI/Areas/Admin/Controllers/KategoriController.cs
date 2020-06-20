@@ -13,6 +13,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
     {
         // GET: Admin/Kategori
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Liste()
         {
             using (KategoriRepository repo = new KategoriRepository())
@@ -24,6 +26,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Ekle()
         {
             return View();
@@ -31,6 +35,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
 
         [AdminFilter]
         [HttpPost]
+        [UserFilter]
+
         public ActionResult Ekle(Kategori model,HttpPostedFileBase[] images)
         {
             if (images[0]!=null)
@@ -59,6 +65,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Sil(int id,string path)
         {
             using (KategoriRepository repo = new KategoriRepository())
@@ -76,6 +84,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             }
         }
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Guncelle(int id)
         {
@@ -88,6 +97,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
         [HttpPost]
         public ActionResult Guncelle(Kategori model,int number,string OldMedia)
         {

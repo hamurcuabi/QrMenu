@@ -14,6 +14,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
     public class UrunController : Controller
     {
         // GET: Admin/Urun
+        [UserFilter]
         [AdminFilter]
         public ActionResult Liste()
         {
@@ -25,6 +26,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             
         }
 
+       
         [HttpPost]
         public JsonResult ListByCategory(int id)
         {
@@ -38,6 +40,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Ekle()
         {
@@ -52,6 +55,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
 
 
         [AdminFilter]
+        [UserFilter]
         [HttpPost]
         public ActionResult Ekle(Urun model, HttpPostedFileBase[] images)
         {
@@ -81,6 +85,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Sil(int id, string path)
         {
@@ -101,6 +106,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
 
 
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Guncelle(int id)
         {
@@ -118,6 +124,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
 
         }
 
+        [UserFilter]
         [AdminFilter]
         [HttpPost]
         public ActionResult Guncelle(Urun model, int number, string OldMedia)

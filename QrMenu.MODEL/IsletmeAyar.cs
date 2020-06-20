@@ -12,6 +12,8 @@ namespace QrMenu.MODEL
     {
         [Key]
         public int IsletmeAyarId { get; set; }
+
+        
         [StringLength(50)]
         public string Ad { get; set; }
      

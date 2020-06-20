@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="IsletmeAyarRepository.cs" />
+    <Compile Include="IsletmeUrunRepository.cs" />
     <Compile Include="KategoriRepository.cs" />
     <Compile Include="KullaniciRepository.cs" />
     <Compile Include="MenuRepository.cs" />
