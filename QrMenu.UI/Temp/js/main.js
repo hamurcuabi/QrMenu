@@ -28,9 +28,10 @@
 	loader();
 
 	var carousel = function() {
-		$('.home-slider').owlCarousel({
-	    loop:true,
-	    autoplay: true,
+        $('.home-slider').owlCarousel({
+            loop: false,
+            autoplay: true,
+            center: true,
 	    margin:0,
 	    animateOut: 'fadeOut',
 	    animateIn: 'fadeIn',
@@ -58,8 +59,8 @@
 	   });
 
 		$('.carousel').owlCarousel({
-			center: true,
-			loop: true,
+            center: true,
+            loop: false,
 			items:1,
 			margin: 30,
 			stagePadding: 0,

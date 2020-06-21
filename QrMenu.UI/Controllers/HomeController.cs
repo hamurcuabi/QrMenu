@@ -13,6 +13,7 @@ namespace QrMenu.UI.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [Route("Qrmenu/{id}")]
         public ActionResult Index(int id)
         {
             //KategoriMenuUrunModel allList = new KategoriMenuUrunModel();
