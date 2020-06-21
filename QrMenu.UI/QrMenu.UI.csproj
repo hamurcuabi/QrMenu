@@ -122,6 +122,7 @@
     <Content Include="Areas\Admin\Temp\adminlte\assets\ionicons\fonts\ionicons.svg" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\ms\css\ms.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\ms\js\addMenu.js" />
+    <Content Include="Areas\Admin\Temp\adminlte\assets\ms\js\addProduct.js" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\ms\js\ms.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\velocity-animate\js\velocity.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\build\config\postcss.config.js" />

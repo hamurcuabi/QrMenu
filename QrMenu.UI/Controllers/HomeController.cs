@@ -1,4 +1,5 @@
 ﻿using QrMenu.BLL;
+using QrMenu.MODEL;
 using QrMenu.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,27 @@ namespace QrMenu.UI.Controllers
             //{
             //    ViewBag.IsletmeAyar = repo.GetOne(f => f.isActive == true);
             //}
+            List<Kategori> kategoriList =new List<Kategori>();
+            using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
+            {
+                var model = repo.IsletmeninUrunleri(id);
+                using (KategoriRepository repo2=new KategoriRepository())
+                {
+                    //kategoriList = repo2.GetList();
+                    foreach (var item in model)
+                    {
+                        var deneme = repo2.GetOne(f => f.KategoriId == item.Urun.KategoriId);
+                        if (!kategoriList.Contains(deneme))
+                        {
+                            kategoriList.Add(deneme);
 
-
-            return View();
+                        }
+                    }
+                }
+                ViewBag.KategoriList = kategoriList;
+                return View(model);
+            }
+            
         }
 
         public ActionResult Landing()
