@@ -29,7 +29,7 @@
 
 	var carousel = function() {
         $('.home-slider').owlCarousel({
-            loop: true,
+            loop: false,
             autoplay: true,
             center: true,
 	    margin:0,
@@ -60,7 +60,7 @@
 
 		$('.carousel').owlCarousel({
             center: true,
-            loop: true,
+            loop: false,
 			items:1,
 			margin: 30,
 			stagePadding: 0,
@@ -80,7 +80,7 @@
 		});
 
 		$('.carousel1').owlCarousel({
-            loop: true,
+            loop: false,
 			items:1,
 			margin: 30,
 			stagePadding: 10,
@@ -100,7 +100,7 @@
 		});
 
 		$('.carousel-engine').owlCarousel({
-            loop: true,
+            loop: false,
 			items:1,
 			margin: 30,
 			stagePadding: 0,
