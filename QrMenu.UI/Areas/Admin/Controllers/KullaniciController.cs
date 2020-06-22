@@ -45,7 +45,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                 
                 model.Sifre = Guid.NewGuid().ToString();
                 bool result = repo.Create(model);
-                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kullanıcı eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kullanıcı eklenemedi." } };
+                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme eklenemedi." } };
                 return RedirectToAction("Liste");
             }
         }
@@ -60,7 +60,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                
                 bool result = repo.Delete(id);
                
-                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kullanıcı silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kullanıcı silinemedi"} };
+                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme silinemedi"} };
                     return RedirectToAction("Liste");
                
               
@@ -104,7 +104,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                 {
 
                     bool result = repo.Create(model);
-                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kullanıcı Güncellendi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kullanıcı Güncellenemedi" } };
+                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme Güncellendi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme Güncellenemedi" } };
                     return RedirectToAction("Liste");
                 }
             }

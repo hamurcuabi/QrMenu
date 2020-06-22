@@ -4,12 +4,12 @@
     border-radius: 30px;
 
 }
-.item
+
     .mainFrame .user-img {
         margin-top: 0 !important;
         
         height: 250px!important;
-        border-radius: unset!important;
+        border-radius: 100%important;
         width: 250px!important;
         top: -137px!important;
         position: relative!important;
@@ -31,3 +31,12 @@
     .mainFrame .text .position{
         color:white!important;
     }
+        .mainFrame .text .position span {
+            font-size: 3rem;
+            border: 7px solid #191515;
+            border-radius: 47px;
+            padding: 1%;
+            text-align: center;
+        }
+
+

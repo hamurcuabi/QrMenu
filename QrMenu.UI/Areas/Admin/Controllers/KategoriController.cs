@@ -71,15 +71,24 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         {
             using (KategoriRepository repo = new KategoriRepository())
             {
+                bool result;
+                try
+                {
+                    result = repo.Delete(id);
+                }
+                catch (Exception e)
+                {
+                    TempData["Message"]  = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategor silinemedi. Kategoriye Bağlı Ürün Olabilir."  } };
+                    result = false;
 
-                bool result=repo.Delete(id);
+                }
                 if (result)
                 {
                     var message=ImageSaver.DeleteImage(path);
-                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategori silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategor silinemedi. </br>" +message } };
+                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategori silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategor silinemedi." +message } };
                     return RedirectToAction("Liste");
                 }
-                TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategori silinemedi. </br>" } };
+                
                 return RedirectToAction("Liste");
             }
         }

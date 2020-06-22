@@ -3468,6 +3468,7 @@
     <Content Include="Temp\css\bootstrap\bootstrap-reboot.css" />
     <Content Include="Temp\css\css\bootstrap-reboot.css" />
     <Content Include="Temp\css\css\mixins\_text-hide.css" />
+    <Content Include="Temp\css\css\msFrontCss.css" />
     <Content Include="Temp\css\flaticon.css" />
     <Content Include="Temp\css\icomoon.css" />
     <Content Include="Temp\css\ionicons.min.css" />

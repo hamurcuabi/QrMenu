@@ -31,7 +31,7 @@
         $('.home-slider').owlCarousel({
             loop: false,
             autoplay: true,
-            center: true,
+            center: false,
 	    margin:0,
 	    animateOut: 'fadeOut',
 	    animateIn: 'fadeIn',
@@ -59,7 +59,7 @@
 	   });
 
 		$('.carousel').owlCarousel({
-            center: true,
+            center: false,
             loop: false,
 			items:1,
 			margin: 30,
@@ -81,7 +81,8 @@
 
 		$('.carousel1').owlCarousel({
             loop: false,
-			items:1,
+            items: 1,
+            center: false,
 			margin: 30,
 			stagePadding: 10,
 			nav: true,
@@ -101,10 +102,11 @@
 
 		$('.carousel-engine').owlCarousel({
             loop: false,
+            center: false,
 			items:1,
 			margin: 30,
-			stagePadding: 0,
-			nav: false,
+            stagePadding: 0,
+            nav: true,
 			navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
 			responsive:{
 				0:{
