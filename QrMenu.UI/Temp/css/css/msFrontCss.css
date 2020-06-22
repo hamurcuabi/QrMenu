@@ -1,0 +1,33 @@
+﻿.mainFrame {
+    border: unset !important;
+    background: #fe8c00 !important;
+    border-radius: 30px;
+
+}
+
+    .mainFrame .user-img {
+        margin-top: 0 !important;
+        
+        height: 250px!important;
+        border-radius: unset!important;
+        width: 250px!important;
+        top: -137px!important;
+        position: relative!important;
+    }
+    .mainFrame .text {
+        margin-top: -170px;
+    }
+    .mainFrame .text .name{
+        color:white!important;
+        font-size:35px!important;
+        text-transform:uppercase;
+        line-height:1.4!important;
+    }
+
+        .mainFrame .text .mb-5{
+            color:white!important;
+            margin-bottom:0!important;
+        }
+    .mainFrame .text .position{
+        color:white!important;
+    }

@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="/Temp/css/flaticon.css">
     <link rel="stylesheet" href="/Temp/css/icomoon.css">
     <link rel="stylesheet" href="/Temp/css/style.css">
+    <link href="~/Temp/css/css/msFrontCss.css" rel="stylesheet" />
 </head>
 <body style="background:#191515">
 
@@ -49,15 +50,20 @@
 
     <section>
         <div class="container">
-            <div class="row justify-content-center mb-2" style="text-align:center">
-                <div class="col-12 text-center heading-section ftco-animate" style="height:200px;background-color:darkorange">
+            <div class="row justify-content-center mb-2 ftco-animate" style="text-align:center">
+                <div class="col-12 text-center heading-section " style="height:200px;background-color:darkorange">
                     <img src="~/Medias/logo.png" alt="Alternate Text" width="150" style="border-radius:30px;background-color:black;margin-top:20px" />
 
 
                 </div>
+                <div class="" style=" height:40px;
+  width:100%;
+  background: -webkit-gradient(radial, 50% 0, 10, 50% 0, 40, from(#fe8c00), color-stop(0.49, #fe8c00), color-stop(0.51, #191515), to(#191515));
+-webkit-background-size: 49px 100%;"></div>
+
                 @*<div class="col-12">
-                    <img src="@(isletmeAyar?.LogoUri??"/Temp/images/about-2.jpg")" width="200"  style="border-radius:50px" alt="@(isletmeAyar?.Ad)" />
-                </div>*@
+            <img src="@(isletmeAyar?.LogoUri??"/Temp/images/about-2.jpg")" width="200"  style="border-radius:50px" alt="@(isletmeAyar?.Ad)" />
+        </div>*@
             </div>
             <div class="row">
                 <div class="col-md-12 dish-menu">
@@ -66,7 +72,7 @@
 
                         @foreach (var item in kategoriList)
                         {
-                            <a class="nav-link cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:50px; margin-bottom:10px;background-color:transparent;color:white;border:1px solid #fe8c00;padding:1px!important;width:15%;text-align:center">@item.Ad</a>
+                            <a class="nav-link cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:50px; margin-bottom:10px;background-color:transparent;color:white;border:1px solid #fe8c00;padding:1px!important;width:150px;text-align:center">@item.Ad</a>
                         }
                         @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>*@
 
@@ -90,31 +96,30 @@
 
                                         @foreach (var urun in Model.Where(f => f.Urun.KategoriId == kategori.KategoriId))
                                         {
-                                            <div class="item text-center">
-                                                <div class="testimony-wrap p-4 pb-5">
+                                            <div class="item text-center" >
+                                                <div class="testimony-wrap p-4 pb-5" style="border-radius:30px!important">
                                                     <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(@urun.Urun.MediaPath)"></div>
                                                     <div class="text">
-                                                        <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                                                        <p class="name">@urun.Urun.Ad</p>
+                                                        <p class="name" style="color:black">@urun.Urun.Ad</p>
 
-                                                        <p class="mb-5">@urun.Urun.Aciklama</p>
-                                                        <span class="position">@urun.IsletmeFiyat.ToString("C")</span>
+                                                        <p class="mb-1" style="color:black">@urun.Urun.Aciklama</p>
+                                                        <span class="position" style="color:black">@urun.IsletmeFiyat.ToString("C")</span>
                                                         <i hidden>@urun.KullaniciUrunId</i>
                                                     </div>
                                                 </div>
                                             </div>
                                             @* <div class=" col-md-6 mr-1 menus d-flex ftco-animate" style="border-radius:10px">
-                <div class="menu-img" style="background-image: url(@urun.Urun.MediaPath);"></div>
-                <div class="text d-flex">
-                    <div class="one-half">
-                        <h3 style="text-align:center;margin-left:-30px">@urun.Urun.Ad</h3>
-                        <p style="text-align:center;margin-left:-30px">@urun.Urun.Aciklama</p>
-                    </div>
-                    <div class="one-forth w-0">
-                        <span class="price">@urun.IsletmeFiyat.ToString("C")</span>
-                    </div>
-                </div>
-            </div>*@
+                                                    <div class="menu-img" style="background-image: url(@urun.Urun.MediaPath);"></div>
+                                                    <div class="text d-flex">
+                                                        <div class="one-half">
+                                                            <h3 style="text-align:center;margin-left:-30px">@urun.Urun.Ad</h3>
+                                                            <p style="text-align:center;margin-left:-30px">@urun.Urun.Aciklama</p>
+                                                        </div>
+                                                        <div class="one-forth w-0">
+                                                            <span class="price">@urun.IsletmeFiyat.ToString("C")</span>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
 
 
 
@@ -186,31 +191,28 @@
 
     <script src="/Temp/js/main.js"></script>
 
-    <script>$(document).ready(function () {
+    <script>
+$(document).ready(function () {
     var Model = [];
-     Model = @Html.Raw(Json.Encode(Model)); 
+     Model = @Html.Raw(Json.Encode(Model));
     @*@foreach (var item in Model)
     {
         @:Model.push("@item");
     }*@
     $(".owl-item").click(function () {
+        $("#mainItem").html('');
         var id = $(this).find("i").text();
+        console.log(id);
+        $.each(Model, function (k, v) {
+            if (v["KullaniciUrunId"] == id) {
+                
+              $("#mainItem").append(' <div class="col-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 item text-center " style="margin-top: 140px;"><div class="testimony-wrap p-4 pb-5 mainFrame"><div class="user-img mb-4" style="margin-bottom: 80px!important;margin-top:0!important;;background-image: url('+v["Urun"]["MediaPath"]+')"></div><div class="text"><p class="name">'+v["Urun"]["Ad"]+'</p><p class="mb-5">'+v["Urun"]["Aciklama"]+'</p><span class="position"><span> ₺ <span style="color:black">|</span> '+v["IsletmeFiyat"]+'</span></div></div></div>');
+            }
+        })
         console.log(Model);
-        $("#mainItem").append(' @*<div class="item text-center">
-                                                <div class="testimony-wrap p-4 pb-5">
-                                                    <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(Model[id][])"></div>
-                                                    <div class="text">
-                                                        <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                                                        <p class="name">@urun.Urun.Ad</p>
 
-                                                        <p class="mb-5">@urun.Urun.Aciklama</p>
-                                                        <span class="position">@urun.IsletmeFiyat.ToString("C")</span>
-                                                        <i hidden>@urun.KullaniciUrunId</i>
-                                                    </div>
-                                                </div>
-                                            </div>'*@');
-             
-       
+
+
     })
 
 });

@@ -29,7 +29,7 @@
 
 	var carousel = function() {
         $('.home-slider').owlCarousel({
-            loop: false,
+            loop: true,
             autoplay: true,
             center: true,
 	    margin:0,
@@ -38,7 +38,7 @@
 	    nav:true,
 	    dots: false,
 	    autoplayHoverPause: false,
-	    items: 1,
+	    items: 5,
 	    navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
 	    responsive:{
 	      0:{
@@ -60,7 +60,7 @@
 
 		$('.carousel').owlCarousel({
             center: true,
-            loop: false,
+            loop: true,
 			items:1,
 			margin: 30,
 			stagePadding: 0,
@@ -74,13 +74,13 @@
 					items: 2
 				},
 				1000:{
-					items: 3
+					items: 5
 				}
 			}
 		});
 
 		$('.carousel1').owlCarousel({
-			loop: false,
+            loop: true,
 			items:1,
 			margin: 30,
 			stagePadding: 10,
@@ -94,13 +94,13 @@
 					items: 2
 				},
 				1000:{
-					items: 3
+					items: 5
 				}
 			}
 		});
 
 		$('.carousel-engine').owlCarousel({
-			loop: false,
+            loop: true,
 			items:1,
 			margin: 30,
 			stagePadding: 0,
@@ -114,7 +114,7 @@
 					items: 2
 				},
 				1000:{
-					items: 4
+					items: 5
 				}
 			}
 		});
