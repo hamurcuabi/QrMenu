@@ -2,9 +2,8 @@
 @using QrMenu.MODEL
 @model ICollection<IsletmeUrun>
 @{
-    Layout = null;
-
-
+    ViewBag.Title = "QrMenu";
+    Layout = "~/Views/Shared/_LayoutQrMenu.cshtml";
 }
 @{
     //ICollection<MenuUrun> menuUrunList = ViewBag.MenuUrunList as ICollection<MenuUrun>;
@@ -12,223 +11,147 @@
     List<Kategori> kategoriList = ViewBag.KategoriList as List<Kategori>;
 }
 
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <title>QrMenu</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <div class="row">
+            <div class="col-md-12 dish-menu">
+
+                <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                    @foreach (var item in kategoriList)
+                    {
+
+                        <a class="nav-link cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:50px; margin-bottom:10px;color:white;border:1px solid #fe8c00;padding:1px!important;width:160px;text-align:center;height:100px;background-image:url( @item.MediaPath);background-size:cover">
 
 
-
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
-    <link rel="stylesheet" href="/Temp/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="/Temp/css/animate.css">
-
-    <link rel="stylesheet" href="/Temp/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/Temp/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/Temp/css/magnific-popup.css">
-    <link href="~/Areas/Admin/Temp/adminlte/assets/ms/css/ms.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/Temp/css/aos.css">
-
-    <link rel="stylesheet" href="/Temp/css/ionicons.min.css">
-
-    <link rel="stylesheet" href="/Temp/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/Temp/css/jquery.timepicker.css">
-
-    <link href="~/Areas/Admin/Temp/adminlte/plugins/fontawesome-free-5.13.1-web/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/Temp/css/flaticon.css">
-    <link rel="stylesheet" href="/Temp/css/icomoon.css">
-    <link rel="stylesheet" href="/Temp/css/style.css">
-    <link href="~/Temp/css/css/msFrontCss.css" rel="stylesheet" />
-</head>
-<body style="background:#191515">
-
-
-
-    <section>
-        <div class="container">
-            <div class="row justify-content-center mb-2 ftco-animate" style="text-align:center">
-                <div class="col-12 text-center heading-section " style="height:200px;background-color:darkorange">
-                    <img src="~/Medias/logo.png" alt="Alternate Text" width="150" style="border-radius:100px;background-color:black;margin-top:20px" />
+                            @item.Ad
+                        </a>
+                    }
+                    @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>*@
 
 
                 </div>
-                <div class="" style=" height:40px;
-  width:100%;
-  background: -webkit-gradient(radial, 50% 0, 10, 50% 0, 40, from(#fe8c00), color-stop(0.49, #fe8c00), color-stop(0.51, #191515), to(#191515));
--webkit-background-size: 49px 100%;"></div>
-
-                @*<div class="col-12">
-            <img src="@(isletmeAyar?.LogoUri??"/Temp/images/about-2.jpg")" width="200"  style="border-radius:50px" alt="@(isletmeAyar?.Ad)" />
-        </div>*@
-            </div>
-            <div class="row">
-                <div class="col-md-12 dish-menu">
-
-                    <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-                        @foreach (var item in kategoriList)
-                        {
-                            <a class="nav-link cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:50px; margin-bottom:10px;background-color:transparent;color:white;border:1px solid #fe8c00;padding:1px!important;width:150px;text-align:center">@item.Ad</a>
-                        }
-                        @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>*@
-
-
-                    </div>
-                    <div class="container">
-                        <div class="row" id="mainItem">
-
-                        </div>
+                <div class="container">
+                    <div class="row" id="mainItem">
 
                     </div>
 
-                    <div class="tab-content py-5" id="v-pills-tabContent">
-                        @foreach (var kategori in kategoriList)
-                        {
-                            <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <div class="row">
-                                    <div class="carousel owl-carousel ftco-owl">
+                </div>
+
+                <div class="tab-content py-5" id="v-pills-tabContent">
+                    @foreach (var kategori in kategoriList)
+                    {
+                        <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="row">
+                                <div class="carousel owl-carousel ftco-owl">
 
 
 
-                                        @foreach (var urun in Model.Where(f => f.Urun.KategoriId == kategori.KategoriId))
-                                        {
-                                            <div class="item text-center" >
-                                                <div class="testimony-wrap p-4 pb-5" style="border-radius:30px!important;height:300px">
-                                                    <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(@urun.Urun.MediaPath)"></div>
-                                                    <div class="text">
-                                                        <p class="name" style="color:black">@urun.Urun.Ad</p>
-
-                                                        
-                                                        <span class="position" style="color:black">@urun.IsletmeFiyat.ToString("C")</span>
-                                                        <i hidden>@urun.KullaniciUrunId</i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @* <div class=" col-md-6 mr-1 menus d-flex ftco-animate" style="border-radius:10px">
-                                                    <div class="menu-img" style="background-image: url(@urun.Urun.MediaPath);"></div>
-                                                    <div class="text d-flex">
-                                                        <div class="one-half">
-                                                            <h3 style="text-align:center;margin-left:-30px">@urun.Urun.Ad</h3>
-                                                            <p style="text-align:center;margin-left:-30px">@urun.Urun.Aciklama</p>
-                                                        </div>
-                                                        <div class="one-forth w-0">
-                                                            <span class="price">@urun.IsletmeFiyat.ToString("C")</span>
-                                                        </div>
-                                                    </div>
-                                                </div>*@
-
-
-
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                        }
-
-                        @*<div class="tab-pane fade active show " id="menu" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <div class="row">
-                                    @foreach (var item in Model.MenuList)
+                                    @foreach (var urun in Model.Where(f => f.Urun.KategoriId == kategori.KategoriId))
                                     {
+                                        <div class="item text-center">
+                                            <div class="testimony-wrap p-4 pb-5" style="border-radius:30px!important;height:300px">
+                                                <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(@urun.Urun.MediaPath)"></div>
+                                                <div class="text">
+                                                    <p class="name" style="color:black">@urun.Urun.Ad</p>
 
-                                        <div class="menus d-flex ftco-animate col-lg-12" style="border-radius:10px">
-                                            <div class="menu-img" style="background-image: url(@item.MediaPath);"></div>
-                                            <div class="text d-flex">
-                                                <div class="one-half">
-                                                    <h3 style="text-align:center;margin-left:-30px">@item.Ad</h3>
 
-                                                    <p style="text-align:center;margin-left:-30px">
-                                                        @foreach (var item2 in menuUrunList.Where(f => f.MenuId == item.MenuId))
-                                                        {
-                                                            <span>
-                                                                @item2.Urun.Ad
-                                                            </span>
-                                                        }
-                                                    </p>
-                                                </div>
-                                                <div class="one-forth">
-                                                    <span class="price">@item.Fiyat.ToString("C")</span>
+                                                    <span class="position" style="color:black">@urun.IsletmeFiyat.ToString("C")</span>
+                                                    <i hidden>@urun.KullaniciUrunId</i>
                                                 </div>
                                             </div>
                                         </div>
+                                        @* <div class=" col-md-6 mr-1 menus d-flex ftco-animate" style="border-radius:10px">
+                                                <div class="menu-img" style="background-image: url(@urun.Urun.MediaPath);"></div>
+                                                <div class="text d-flex">
+                                                    <div class="one-half">
+                                                        <h3 style="text-align:center;margin-left:-30px">@urun.Urun.Ad</h3>
+                                                        <p style="text-align:center;margin-left:-30px">@urun.Urun.Aciklama</p>
+                                                    </div>
+                                                    <div class="one-forth w-0">
+                                                        <span class="price">@urun.IsletmeFiyat.ToString("C")</span>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+
+
+
                                     }
-
-
-
                                 </div>
-                            </div>*@
-                    </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    @*<div class="tab-pane fade active show " id="menu" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="row">
+                                @foreach (var item in Model.MenuList)
+                                {
+
+                                    <div class="menus d-flex ftco-animate col-lg-12" style="border-radius:10px">
+                                        <div class="menu-img" style="background-image: url(@item.MediaPath);"></div>
+                                        <div class="text d-flex">
+                                            <div class="one-half">
+                                                <h3 style="text-align:center;margin-left:-30px">@item.Ad</h3>
+
+                                                <p style="text-align:center;margin-left:-30px">
+                                                    @foreach (var item2 in menuUrunList.Where(f => f.MenuId == item.MenuId))
+                                                    {
+                                                        <span>
+                                                            @item2.Urun.Ad
+                                                        </span>
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div class="one-forth">
+                                                <span class="price">@item.Fiyat.ToString("C")</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+
+                            </div>
+                        </div>*@
                 </div>
             </div>
-            <div class="row">
-                <div class="ftco-animate" style="height: 40px;
-    width: 100%;
-    background: -webkit-gradient(radial, 50% 100%, 10, 50% 100%, 40, from(#fe8c00), color-stop(0.49, #fe8c00), color-stop(0.51, #191515), to(#191515));
-    -webkit-background-size: 49px 100%;"></div>
-            </div>
         </div>
-    </section>
-   
 
 
-
-
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
-
-    <script src="/Temp/js/jquery.min.js"></script>
-    <script src="/Temp/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="/Temp/js/popper.min.js"></script>
-    <script src="/Temp/js/bootstrap.min.js"></script>
-    <script src="/Temp/js/jquery.easing.1.3.js"></script>
-    <script src="/Temp/js/jquery.waypoints.min.js"></script>
-    <script src="/Temp/js/jquery.stellar.min.js"></script>
+@section indexJs{
     <script src="/Temp/js/owl.carousel.min.js"></script>
-    <script src="/Temp/js/jquery.magnific-popup.min.js"></script>
-    <script src="/Temp/js/aos.js"></script>
-    <script src="/Temp/js/jquery.animateNumber.min.js"></script>
-    <script src="/Temp/js/bootstrap-datepicker.js"></script>
-    <script src="/Temp/js/jquery.timepicker.min.js"></script>
-
-
-    <script src="/Temp/js/main.js"></script>
-
     <script>
-$(document).ready(function () {
+    $(document).ready(function () {
     var Model = [];
-     Model = @Html.Raw(Json.Encode(Model));
+    Model = @Html.Raw(Json.Encode(Model));
     @*@foreach (var item in Model)
-    {
-        @:Model.push("@item");
-    }*@
+        {
+            @:Model.push("@item");
+        }*@
     $(".nav-link").click(function () {
 
-        $("#mainItem").html('');
+    $("#mainItem").html('');
     })
 
     $(".testimony-wrap").click(function () {
-        $("#mainItem").html('');
-        var id = $(this).find("i").text();
-        
-        $.each(Model, function (k, v) {
-            if (v["KullaniciUrunId"] == id) {
-                
-              $("#mainItem").append(' <div class="col-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 item text-center " style="margin-top: 140px;"><div class="testimony-wrap p-4 pb-5 mainFrame"><div class="user-img mb-4" style="margin-bottom: 80px!important;margin-top:0!important;;background-image: url('+v["Urun"]["MediaPath"]+')"></div><div class="text"><p class="name">'+v["Urun"]["Ad"]+'</p><p class="mb-5">'+v["Urun"]["Aciklama"]+'</p><span class="position"><span>₺'+v["IsletmeFiyat"]+'</span></div></div></div>');
-            }
-        })
-        console.log(Model);
+    $("#mainItem").html('');
+    var id = $(this).find("i").text();
+
+    $.each(Model, function (k, v) {
+        if (v["KullaniciUrunId"] == id) {
+         
+
+    $("#mainItem").append(' <div class="col-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 item text-center " style="margin-top: 140px;"><div class="testimony-wrap p-4 pb-5 mainFrame"><div class="user-img mb-4" style="margin-bottom: 80px!important;margin-top:0!important;;background-image: url('+v["Urun"]["MediaPath"]+')"></div><div class="text"><p class="name">'+v["Urun"]["Ad"]+'</p><p class="mb-5">'+v["Urun"]["Aciklama"]+'</p><span class="position"><span>₺'+v["IsletmeFiyat"]+'</span></div></div></div>');
+    }
+    })
+    
 
 
 
     })
 
-});
-
-
+    });
     </script>
-</body>
-</html>
+}
+
+
+

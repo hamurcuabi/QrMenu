@@ -7747,13 +7747,13 @@ h1, h2, h3, h4, h5,
     font-size: 20px;
     margin-right: 5px; }
     .dish-menu .nav-pills .nav-link.active {
-        background: #fe8c00!important;
+        border: 5px solid #fe8c00 !important;
         color: #404044;
     }
     @media (min-width: 768px) {
         .dish-menu .nav-pills .nav-link.active {
             margin-top: -4px;
-            background: #fe8c00!important;
+            border: 5px solid #fe8c00 !important;
         } }
   @media (max-width: 767.98px) {
     .dish-menu .nav-pills .nav-link {
