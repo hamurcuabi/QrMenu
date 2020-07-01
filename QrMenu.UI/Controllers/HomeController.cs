@@ -14,28 +14,28 @@ namespace QrMenu.UI.Controllers
         // GET: Home
         public ActionResult Index(int id)
         {
-            //KategoriMenuUrunModel allList = new KategoriMenuUrunModel();
-            //using (UrunRepository repo = new UrunRepository())
-            //{
-            //    allList.UrunList = repo.GetList();
+            KategoriMenuUrunModel allList = new KategoriMenuUrunModel();
+            using (UrunRepository repo = new UrunRepository())
+            {
+                allList.UrunList = repo.GetList();
 
-            //}
-            //using (KategoriRepository repo = new KategoriRepository())
-            //{
-            //    allList.KategoriList = repo.GetList();
-            //}
-            //using (MenuRepository repo = new MenuRepository())
-            //{
-            //    allList.MenuList = repo.GetList();
-            //}
-            //using (MenuUrunRepository repo = new MenuUrunRepository())
-            //{
-            //    ViewBag.MenuUrunList = repo.GetList();
-            //}
-            //using (IsletmeAyarRepository repo = new IsletmeAyarRepository())
-            //{
-            //    ViewBag.IsletmeAyar = repo.GetOne(f => f.isActive == true);
-            //}
+            }
+            using (KategoriRepository repo = new KategoriRepository())
+            {
+                allList.KategoriList = repo.GetList();
+            }
+            using (MenuRepository repo = new MenuRepository())
+            {
+                allList.MenuList = repo.GetList();
+            }
+            using (MenuUrunRepository repo = new MenuUrunRepository())
+            {
+                ViewBag.MenuUrunList = repo.GetList();
+            }
+            using (IsletmeAyarRepository repo = new IsletmeAyarRepository())
+            {
+                ViewBag.IsletmeAyar = repo.GetOne(f => f.isActive == true);
+            }
 
 
             return View();
