@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>@ViewBag.Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    <link rel="stylesheet" href="/Temp/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/Temp/css/animate.css">
+
+    <link rel="stylesheet" href="/Temp/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Temp/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Temp/css/magnific-popup.css">
+    <link href="~/Areas/Admin/Temp/adminlte/assets/ms/css/ms.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Temp/css/aos.css">
+
+    <link rel="stylesheet" href="/Temp/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/Temp/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/Temp/css/jquery.timepicker.css">
+
+    <link href="~/Areas/Admin/Temp/adminlte/plugins/fontawesome-free-5.13.1-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Temp/css/flaticon.css">
+    <link rel="stylesheet" href="/Temp/css/icomoon.css">
+    <link rel="stylesheet" href="/Temp/css/style.css">
+    <link href="~/Temp/css/css/msFrontCss.css" rel="stylesheet" />
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    @*<script src="~/Temp/js/instascan.min.js"></script>*@
+</head>
+<body style="background:#191515">
+    <section>
+        <div class="container">
+            <div class="row justify-content-center mb-2 ftco-animate" style="text-align:center">
+                <div class="col-12 text-center heading-section " style="height:200px;background-color:darkorange">
+                    <img src="~/Medias/logo.png" alt="Alternate Text" width="150" style="border-radius:100px;background-color:black;margin-top:20px" />
+
+
+                </div>
+                <div class="" style=" height:40px;
+  width:100%;
+  background: -webkit-gradient(radial, 50% 0, 10, 50% 0, 40, from(#fe8c00), color-stop(0.49, #fe8c00), color-stop(0.51, #191515), to(#191515));
+-webkit-background-size: 49px 100%;"></div>
+
+                @*<div class="col-12">
+                        <img src="@(isletmeAyar?.LogoUri??"/Temp/images/about-2.jpg")" width="200"  style="border-radius:50px" alt="@(isletmeAyar?.Ad)" />
+                    </div>*@
+            </div>
+            @RenderBody()
+
+
+
+            <div class="row">
+                <div class="ftco-animate" style="height: 40px;
+    width: 100%;
+    background: -webkit-gradient(radial, 50% 100%, 10, 50% 100%, 40, from(#fe8c00), color-stop(0.49, #fe8c00), color-stop(0.51, #191515), to(#191515));
+    -webkit-background-size: 49px 100%;"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+    <script src="/Temp/js/jquery.min.js"></script>
+    <script src="/Temp/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/Temp/js/popper.min.js"></script>
+    <script src="/Temp/js/bootstrap.min.js"></script>
+    <script src="/Temp/js/jquery.easing.1.3.js"></script>
+    <script src="/Temp/js/jquery.waypoints.min.js"></script>
+    <script src="/Temp/js/jquery.stellar.min.js"></script>
+    <script src="/Temp/js/owl.carousel.min.js"></script>
+    <script src="/Temp/js/jquery.magnific-popup.min.js"></script>
+    <script src="/Temp/js/aos.js"></script>
+    <script src="/Temp/js/jquery.animateNumber.min.js"></script>
+    <script src="/Temp/js/bootstrap-datepicker.js"></script>
+    <script src="/Temp/js/jquery.timepicker.min.js"></script>
+
+
+    <script src="/Temp/js/main.js"></script>
+
+    @RenderSection("indexJs", false)
+</body>
+</html>

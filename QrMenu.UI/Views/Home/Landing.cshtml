@@ -1,42 +1,37 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "QrMenu";
+    Layout = "~/Views/Shared/_LayoutQrMenu.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Landing</title>
-    <script src="~/Temp/js/instascan.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div style="text-align:center">
-                <video class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-6" style="border:1px solid blue;" id="preview"></video>
-            </div>
-        </div>
-    </div>
-
-    <script>
+<div class="container">
+    <div class="row">
+        
+            <video  class="col-12 col-md-4 offset-md-4 col-lg-4 offset-lg-4 ftco-animate fadeInUp ftco-animated" style="border:1px solid blue;height:300px;" id="preview"></video>
       
-            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-            scanner.addListener('scan', function (content) {
-                console.log(content);
-            });
-            Instascan.Camera.getCameras().then(function (cameras) {
-                if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
-                } else {
-                    console.error('No cameras found.');
-                }
-            }).catch(function (e) {
-                console.error(e);
-            });
-       
-    </script>
+    </div>
+</div>
 
-</body>
-</html>
+<script>
+
+    let scanner = new Instascan.Scanner(
+        {
+            video: document.getElementById('preview')
+        }
+    );
+    scanner.addListener('scan', function (content) {
+        //alert('Escaneou o conteudo: ' + content);
+        //window.open(content);
+        window.open(content,"_self")
+    });
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error("Kamera Bulunamadı");
+        }
+    });
+
+</script>
+

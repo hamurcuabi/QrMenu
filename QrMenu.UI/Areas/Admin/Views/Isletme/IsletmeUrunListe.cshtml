@@ -8,70 +8,90 @@
 }
 
 
-    <div class="container-fluid">
-        @Html.Partial("_PartialMessage")
-        @if (eklenemeyenUrunler != null)
-        {
-            <div class="alert alert-danger">
-                @foreach (var item in eklenemeyenUrunler)
-                {
-                  <p>@item.Ad <span>Adlı ürün eklenemedi</span></p><br>
-                }
-            </div>
-        }
+<div class="container-fluid">
+    @Html.Partial("_PartialMessage")
+    @if (eklenemeyenUrunler != null)
+    {
+        <div class="alert alert-danger">
+            @foreach (var item in eklenemeyenUrunler)
+            {
+                <p>@item.Ad <span>Adlı ürün eklenemedi</span></p><br>
+            }
+        </div>
+    }
 
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Urun Listesi</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Ad</th>
-                            <th>Açıklama</th>
-                            <th>Kategorisi</th>
-                            <th>Aktif mi?</th>
-                            <th>Görsel</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Urun Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Fiyat</th>
+                        <th>İşletme Fiyatı</th>
+                        <th>Kategorisi</th>
+                        <th>Aktif mi?</th>
+                        <th>Görsel</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Urun.Ad</td>
+                        <td>@item.Urun.Aciklama</td>
+                        <td>@item.Urun.Fiyat</td>
+                        <td>@item.IsletmeFiyat</td>
+                        <td>@item.Urun.Kategori.Ad</td>
+                        @if (item.Urun.IsAktif)
                         {
-                            <tr>
-                                <td>@item.Urun.Ad</td>
-                                <td>@item.Urun.Aciklama</td>
-                                <td>@item.Urun.Kategori.Ad</td>
-                                <td><input type="checkbox" name="isAktif" value="@item.Urun.IsAktif" disabled /></td>
-                                <td><img src="@item.Urun.MediaPath" alt="@item.Urun.Ad" width="50" /></td>
-                                <td>
-                                    @Html.ActionLink("Sil", "IsletmeUrunSil", new { id = item.KullaniciUrunId }, new { @class = "btn btn-danger" })
-                                   
-                                </td>
+                            <td class="bg-success">
 
-                            </tr>
+                                <input class="border-danger" type="checkbox" name="isAktif" checked disabled />
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="bg-danger">
+
+                                <input class="border-danger" type="checkbox" name="isAktif"  disabled />
+                            </td>
                         }
 
+                        <td><img src="@item.Urun.MediaPath" alt="@item.Urun.Ad" width="50" /></td>
+                        <td>
+                            @Html.ActionLink("Sil", "IsletmeUrunSil", new { id = item.KullaniciUrunId }, new { @class = "btn btn-danger" })
 
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Ad</th>
-                            <th>Açıklama</th>
-                            <th>Kategorisi</th>
-                            <th>Aktif mi?</th>
-                            <th>Görsel</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <!-- /.card-body -->
+                        </td>
+
+                    </tr>
+                    }
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Fiyat</th>
+                        <th>İşletme Fiyatı</th>
+                        <th>Kategorisi</th>
+                        <th>Aktif mi?</th>
+                        <th>Görsel</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-        <!-- /.card -->
+        <!-- /.card-body -->
     </div>
+    <!-- /.card -->
+</div>
 
 
 @section kategoriJs{

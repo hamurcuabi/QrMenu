@@ -7746,12 +7746,15 @@ h1, h2, h3, h4, h5,
   .dish-menu .nav-pills .nav-link span {
     font-size: 20px;
     margin-right: 5px; }
-  .dish-menu .nav-pills .nav-link.active {
-    background: #ffb400;
-    color: #404044; }
+    .dish-menu .nav-pills .nav-link.active {
+        border: 5px solid #fe8c00 !important;
+        color: #404044;
+    }
     @media (min-width: 768px) {
-      .dish-menu .nav-pills .nav-link.active {
-        margin-top: -4px; } }
+        .dish-menu .nav-pills .nav-link.active {
+            margin-top: -4px;
+            border: 5px solid #fe8c00 !important;
+        } }
   @media (max-width: 767.98px) {
     .dish-menu .nav-pills .nav-link {
       display: block;

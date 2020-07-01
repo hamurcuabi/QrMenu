@@ -112,7 +112,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         {
             using (UrunRepository repo = new UrunRepository())
             {
-                Urun model = repo.GetOne(f => f.KategoriId == id);
+                Urun model = repo.GetOne(f => f.UrunId == id);
                 using (KategoriRepository repo2 = new KategoriRepository())
                 {
                     ViewBag.KategoriList = repo2.GetList();
@@ -127,15 +127,27 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [UserFilter]
         [AdminFilter]
         [HttpPost]
-        public ActionResult Guncelle(Urun model, int number, string OldMedia)
+        public ActionResult Guncelle(Urun model, int number, string OldMedia,HttpPostedFileBase[] media)
         {
-            if (model.MediaPath == null)
+            model.UrunId = number;
+            if (media == null)
             {
                 model.MediaPath = OldMedia;
             }
+            //ImageSaver.DeleteImage(OldMedia);
+            var saveResult = ImageSaver.SaveImage(media, model.Ad).Last();
+            if (!saveResult.Contains("Dosya Kaydedilemedi"))
+            {
+                model.MediaPath = saveResult;
+            }
+            else
+            {
+                TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", $"Görsel Kaydedilemedi </br>{saveResult[1]} " } };
+                return RedirectToAction("Ekle");
+            }
             using (UrunRepository repo = new UrunRepository())
             {
-                model.KategoriId = number;
+                //model.KategoriId = number;
                 bool result = repo.Update(model);
                 TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategroi eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategroi eklenemedi." } };
                 return RedirectToAction("Liste");

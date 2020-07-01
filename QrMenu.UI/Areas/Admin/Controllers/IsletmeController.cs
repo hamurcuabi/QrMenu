@@ -1,5 +1,6 @@
 ﻿using QrMenu.BLL;
 using QrMenu.MODEL;
+using QrMenu.UI.Areas.Admin.Models;
 using QrMenu.UI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [UserFilter]
         public ActionResult Ayar()
         {
-            
+
             using (IsletmeAyarRepository repo = new IsletmeAyarRepository())
             {
                 IsletmeAyar ayar = repo.GetOne(f => f.isActive == true);
@@ -71,7 +72,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         {
             using (IsletmeAyarRepository repo = new IsletmeAyarRepository())
             {
-                return Json(new { model=repo.Toggle(id)});
+                return Json(new { model = repo.Toggle(id) });
             }
         }
 
@@ -100,15 +101,15 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
-       
+
 
         [AdminFilter]
         public ActionResult IsletmeUrunSil(int id)
         {
             Kullanici kullanici = Session["loginSU"] as Kullanici;
-            using (IsletmeUrunRepository repo =new IsletmeUrunRepository())
+            using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
             {
-               bool result=repo.Delete(id);
+                bool result = repo.Delete(id);
                 TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Ürün Silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Ürün Silinemedi" } };
                 return RedirectToAction("IsletmeUrunListe");
             }
@@ -126,24 +127,26 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
 
-        [AdminFilter]
+        //[AdminFilter]
         [HttpPost]
-        public ActionResult IsletmeUrunEkle(int[] model)
+        [AdminFilter]
+        public void IsletmeUrunEkle(/*int[] model,string[] obj*/ string model)
         {
+            IsletmeUrunEkleModel b = (IsletmeUrunEkleModel)Newtonsoft.Json.JsonConvert.DeserializeObject(model, typeof(IsletmeUrunEkleModel));
             Kullanici kullanici = Session["loginSU"] as Kullanici;
-            List<int> eklenecekler = new List<int>();
+            //List<int> eklenecekler = new List<int>();
             using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
             {
-                var olanlar = repo.GetList(f=>f.KullaniciId==kullanici.KullaniciId);
-                foreach (var item in model)
+                var olanlar = repo.GetList(f => f.KullaniciId == kullanici.KullaniciId);
+                foreach (var item in b.IsletmeUrunEkleModelList)
                 {
-                    if(!olanlar.Any(f => f.UrunId == item))
+                    if (olanlar.Any(f => f.UrunId == item.Id))
                     {
-                        eklenecekler.Add(item);
+                        b.IsletmeUrunEkleModelList.Remove(item);
                     }
                 }
-               List<int> result = repo.UrunleriEkle(eklenecekler, kullanici.KullaniciId);
-                if (result.Count()==0)
+                List<int> result = repo.UrunleriEkle(b, kullanici.KullaniciId);
+                if (result.Count() == 0)
                 {
                     TempData["Message"] = new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Ürünler eklendi." } };
                 }
@@ -161,8 +164,9 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                     TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", $"{result.Count()} ürün eklenemedi" } };
                     ViewBag.EklenemeyenUrunler = eklenemeyenUrunler;
                 }
-                return RedirectToAction("IsletmeUrunListe");
+                //return RedirectToAction("IsletmeUrunEkle");
             }
         }
     }
+
 }

@@ -1,4 +1,5 @@
 ﻿using QrMenu.MODEL;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,15 @@ namespace QrMenu.BLL
             return GetList(f => f.KullaniciId == id);
         }
 
-        public List<int> UrunleriEkle(List<int> model,int id)
+        public List<int> UrunleriEkle(IsletmeUrunEkleModel model,int id)
         {
             List<int> eklenemeyenler = new List<int>();
-            foreach (var item in model)
+            foreach (var item in model.IsletmeUrunEkleModelList)
             {
-               bool result= Create(new IsletmeUrun { KullaniciId = id, UrunId = item });
+               bool result= Create(new IsletmeUrun { KullaniciId = id, UrunId = item.Id,IsletmeFiyat=item.Fiyat });
                 if (!result)
                 {
-                    eklenemeyenler.Add(item);
+                    eklenemeyenler.Add(item.Id);
                 }
             }
             return eklenemeyenler;

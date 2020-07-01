@@ -122,6 +122,7 @@
     <Content Include="Areas\Admin\Temp\adminlte\assets\ionicons\fonts\ionicons.svg" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\ms\css\ms.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\ms\js\addMenu.js" />
+    <Content Include="Areas\Admin\Temp\adminlte\assets\ms\js\addProduct.js" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\ms\js\ms.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\assets\velocity-animate\js\velocity.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\build\config\postcss.config.js" />
@@ -3435,29 +3436,6 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png.png" />
-    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png18062020_125630.png" />
-    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png18062020_130054.png" />
-    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png18062020_130232.png" />
-    <Content Include="Medias\Ana_Yemek\Ana_Yemek_5_png19062020_205007.png" />
-    <Content Include="Medias\Bodrum_Menu\Bodrum_Menu_1_png.png" />
-    <Content Include="Medias\Domates\Domates_3_png.png" />
-    <Content Include="Medias\Fanta\Fanta_banner1_jpg.jpg" />
-    <Content Include="Medias\Kadayif\Kadayif_16_png.png" />
-    <Content Include="Medias\Kapuska\Kapuska_2_png.png" />
-    <Content Include="Medias\Karni_Yarik\Karni_Yarik_30_png.png" />
-    <Content Include="Medias\kutu_kola\kutu_kola_6_png.png" />
-    <Content Include="Medias\Manti\Manti_5_png.png" />
-    <Content Include="Medias\Merve_Sozen\Merve_Sozen_21_png.png" />
-    <Content Include="Medias\Motin_Steel\Motin_Steel_002-user-01_png.png" />
-    <Content Include="Medias\ogrenci_menu\ogrenci_menu_6_png.png" />
-    <Content Include="Medias\Sefi_Corbasi\Sefi_Corbasi_002-user-01_png.png" />
-    <Content Include="Medias\Sehriye\Sehriye_2_png.png" />
-    <Content Include="Medias\Supangle\Supangle_9_png.png" />
-    <Content Include="Medias\Sutlac\Sutlac_18_png.png" />
-    <Content Include="Medias\Tavuk_Sote\Tavuk_Sote_10_png.png" />
-    <Content Include="Medias\urun_3_\urun_3__8_png.png" />
-    <Content Include="Medias\urun_adi\urun_adi_5_png.png" />
     <Content Include="Temp\css\ajax-loader.gif" />
     <Content Include="Temp\css\animate.css" />
     <Content Include="Temp\css\aos.css" />
@@ -3467,6 +3445,7 @@
     <Content Include="Temp\css\bootstrap\bootstrap-reboot.css" />
     <Content Include="Temp\css\css\bootstrap-reboot.css" />
     <Content Include="Temp\css\css\mixins\_text-hide.css" />
+    <Content Include="Temp\css\css\msFrontCss.css" />
     <Content Include="Temp\css\flaticon.css" />
     <Content Include="Temp\css\icomoon.css" />
     <Content Include="Temp\css\ionicons.min.css" />
@@ -3910,6 +3889,8 @@
     <Content Include="Views\Shared\_PartialMessage.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Home\Landing.cshtml" />
+    <Content Include="Views\Shared\_LayoutQrMenu.cshtml" />
+    <Content Include="Views\Home\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3919,7 +3900,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Medias\Ogrenci_Menusu\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.d.ts" />

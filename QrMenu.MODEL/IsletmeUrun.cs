@@ -17,6 +17,8 @@ namespace QrMenu.MODEL
 
         public int UrunId { get; set; }
 
+        public decimal IsletmeFiyat { get; set; }
+
         [ForeignKey("KullaniciId")]
         public virtual Kullanici Kullanici { get; set; } 
         [ForeignKey("UrunId")]
