@@ -1,0 +1,124 @@
+﻿@using QrMenu.MODEL
+@model ICollection<IsletmeAyar>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+}
+    
+<div class="container-fluid">
+    @Html.Partial("_PartialMessage")
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Ayar Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Adres</th>
+                        <th>Tel</th>
+                        <th>Email</th>
+                        <th>Facebook</th>
+                        <th>Instagram</th>
+                        <th>Twitter</th>
+                        <th>Logo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Ad</td>
+                            <td>@item.Adres</td>
+                            <td>@item.TelNo</td>
+                            <td>@item.Email</td>
+                            <td>@item.Facebook</td>
+                            <td>@item.Instagram</td>
+                            <td>@item.Twitter</td>
+                            <td><img src="@item.LogoUri" alt="@item.Ad" width="50" /></td>
+                            <td>
+                                
+
+                                    <input type="checkbox" name="my-checkbox" onchange="Toggle(@item.IsletmeAyarId)" id="@item.IsletmeAyarId" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                                    
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Adres</th>
+                        <th>Tel</th>
+                        <th>Email</th>
+                        <th>Facebook</th>
+                        <th>Instagram</th>
+                        <th>Twitter</th>
+                        <th>Logo</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+
+
+@section kategoriJs{
+
+    <script src="~/Areas/Admin/Temp/adminlte/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script>
+       $("input[data-bootstrap-switch]").bootstrapSwitch();
+       
+        //$("input[data-bootstrap-switch]").each(function () {
+        //    $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        //})
+        function Toggle(ayarId) {
+            
+                console.log("hehehe")
+                console.log(ayarId)
+                var isActive = document.getElementById(ayarId);
+            $.ajax({
+                type: "post",
+                url: "/Isletme/ToggleActivity",
+                data: { id: ayarId },
+                dataType: "JSON",
+                success: function (data) {
+                    console.log(data)
+                    if (data.model) {
+                        console.log("ahahaha")
+                       $("input[data-bootstrap-switch]").bootstrapSwitch('state', $(this).prop('checked'));
+                        console.log("zuhahah")
+                    }
+                }
+                
+            })
+            
+
+        
+        //var isActive = $("isActive")
+        //isAktive.change(function () {
+
+
+        //})
+        }
+       
+    </script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+        });
+    </script>
+}

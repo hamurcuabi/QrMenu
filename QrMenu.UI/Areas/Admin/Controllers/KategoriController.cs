@@ -13,6 +13,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
     {
         // GET: Admin/Kategori
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Liste()
         {
             using (KategoriRepository repo = new KategoriRepository())
@@ -24,6 +26,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Ekle()
         {
             return View();
@@ -31,6 +35,8 @@ namespace QrMenu.UI.Areas.Admin.Controllers
 
         [AdminFilter]
         [HttpPost]
+        [UserFilter]
+
         public ActionResult Ekle(Kategori model,HttpPostedFileBase[] images)
         {
             if (images[0]!=null)
@@ -59,23 +65,35 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
+
         public ActionResult Sil(int id,string path)
         {
             using (KategoriRepository repo = new KategoriRepository())
             {
+                bool result;
+                try
+                {
+                    result = repo.Delete(id);
+                }
+                catch (Exception e)
+                {
+                    TempData["Message"]  = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategor silinemedi. Kategoriye Bağlı Ürün Olabilir."  } };
+                    result = false;
 
-                bool result=repo.Delete(id);
+                }
                 if (result)
                 {
                     var message=ImageSaver.DeleteImage(path);
-                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategori silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategor silinemedi. </br>" +message } };
+                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategori silindi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategor silinemedi." +message } };
                     return RedirectToAction("Liste");
                 }
-                TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategori silinemedi. </br>" } };
+                
                 return RedirectToAction("Liste");
             }
         }
 
+        [UserFilter]
         [AdminFilter]
         public ActionResult Guncelle(int id)
         {
@@ -88,6 +106,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         }
 
         [AdminFilter]
+        [UserFilter]
         [HttpPost]
         public ActionResult Guncelle(Kategori model,int number,string OldMedia)
         {

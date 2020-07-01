@@ -1,5 +1,6 @@
 namespace QrMenu.DAL.Migrations
 {
+    using QrMenu.MODEL;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -19,6 +20,16 @@ namespace QrMenu.DAL.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            if (!context.Kullanici.Any(f => f.KullaniciAdi == "Admin"))
+            {
+                context.Kullanici.AddOrUpdate(new Kullanici { KullaniciAdi = "Admin", Sifre = "qrmenu/admin", Yetki = (int)EnumYetki.Admin });
+            }
+            if (!context.Kullanici.Any(f => f.KullaniciAdi == "isletme"))
+            {
+                context.Kullanici.AddOrUpdate(new Kullanici { KullaniciAdi = "isletme", Sifre = "isletme", Yetki = (int)EnumYetki.Isletme });
+            }
+            
+            
         }
     }
 }

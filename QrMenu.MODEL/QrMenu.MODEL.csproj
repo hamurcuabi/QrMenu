@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumYetki.cs" />
     <Compile Include="IsletmeAyar.cs" />
+    <Compile Include="IsletmeUrun.cs" />
+    <Compile Include="IsletmeUrunEkleModel.cs" />
     <Compile Include="Kategori.cs" />
     <Compile Include="Kullanici.cs" />
     <Compile Include="Menu.cs" />

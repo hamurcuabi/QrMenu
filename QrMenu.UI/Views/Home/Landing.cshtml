@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "QrMenu";
+    Layout = "~/Views/Shared/_LayoutQrMenu.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        
+            <video  class="col-12 col-md-4 offset-md-4 col-lg-4 offset-lg-4 ftco-animate fadeInUp ftco-animated" style="border:1px solid blue;height:300px;" id="preview"></video>
+      
+    </div>
+</div>
+
+<script>
+
+    let scanner = new Instascan.Scanner(
+        {
+            video: document.getElementById('preview')
+        }
+    );
+    scanner.addListener('scan', function (content) {
+        //alert('Escaneou o conteudo: ' + content);
+        //window.open(content);
+        window.open(content,"_self")
+    });
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error("Kamera Bulunamadı");
+        }
+    });
+
+</script>
+

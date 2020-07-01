@@ -20,26 +20,40 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
+            Kullanici user = Session["loginSU"] as Kullanici;
             KategoriMenuUrunKullaniciModel model = new KategoriMenuUrunKullaniciModel();
-            using (KategoriRepository repo = new KategoriRepository())
+            if (user.Yetki==(int)EnumYetki.Admin)
             {
-                model.KategoriList = repo.GetList();
+                using (KategoriRepository repo = new KategoriRepository())
+                {
+                    model.KategoriList = repo.GetList();
+                }
+                using (MenuRepository repo = new MenuRepository())
+                {
+                    model.MenuList = repo.GetList();
+                }
+                using (UrunRepository repo = new UrunRepository())
+                {
+                    model.UrunList = repo.GetList();
+                }
+                using (KullaniciRepository repo = new KullaniciRepository())
+                {
+                    model.KullaniciList = repo.GetList();
+                }
+                return View(model);
             }
-            using (MenuRepository repo = new MenuRepository())
+            else if (user.Yetki==(int)EnumYetki.Isletme)
             {
-                model.MenuList = repo.GetList();
+                using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
+                {
+                    ViewBag.IsletmeUrunList = repo.IsletmeninUrunleri(user.KullaniciId);
+                }
+                
             }
-            using (UrunRepository repo = new UrunRepository())
-            {
-                model.UrunList = repo.GetList();
-            }
-            using (KullaniciRepository repo = new KullaniciRepository())
-            {
-                model.KullaniciList = repo.GetList();
-            }
-            return View(model);
+            return View();
         }
 
+       
         [Route("Giris")]
         public ActionResult Login()
         {
@@ -52,15 +66,22 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         {
             using (KullaniciRepository repo = new KullaniciRepository())
             {
-                Kullanici superSu = repo.CheckUser(model);
-                if (superSu != null)
+                Kullanici user = repo.CheckUser(model);
+                if (user != null)
                 {
-                    Session["loginSU"] = superSu;
+                    Session["loginSU"] = user;
                     return RedirectToAction("Index");
                 }
                 TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Hatalı kullanıcı Adı/Şifre" } };
                 return RedirectToAction("Login");
             }
+        }
+
+        [AdminFilter]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿@using QrMenu.MODEL
+@model ICollection<Urun>
+@{
+    ViewBag.Title = "IsletmeUrunEkle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        @Html.Partial("_PartialMessage")
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Ürün Ekle</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form enctype="multipart/form-data" method="post" action="" id="urunForm">
+                <div class="card-body">
+
+
+
+                    <div class="form-group">
+                        <label>Ürün</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Ürün Seçin" style="width: 100%;" name="model" id="urunekle">
+
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.UrunId">@item.Ad</option>
+                            }
+                        </select>
+                    </div>
+                    <div id="fiyatlar">
+
+                    </div>
+
+
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+@section isletmeUrunEkleJs{
+    <script>$("#urunekle").select2()</script>
+
+    <script src="~/Areas/Admin/Temp/adminlte/assets/ms/js/addProduct.js"></script>
+
+}

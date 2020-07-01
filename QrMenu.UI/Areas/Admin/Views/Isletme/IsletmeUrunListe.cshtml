@@ -1,0 +1,107 @@
+﻿@using QrMenu.MODEL
+@model ICollection<IsletmeUrun>
+@{
+    ViewBag.Title = "IsletmeUrunListe";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<Urun> eklenemeyenUrunler = ViewBag.EklenemeyenUrunler as List<Urun>;
+
+}
+
+
+<div class="container-fluid">
+    @Html.Partial("_PartialMessage")
+    @if (eklenemeyenUrunler != null)
+    {
+        <div class="alert alert-danger">
+            @foreach (var item in eklenemeyenUrunler)
+            {
+                <p>@item.Ad <span>Adlı ürün eklenemedi</span></p><br>
+            }
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Urun Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Fiyat</th>
+                        <th>İşletme Fiyatı</th>
+                        <th>Kategorisi</th>
+                        <th>Aktif mi?</th>
+                        <th>Görsel</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Urun.Ad</td>
+                        <td>@item.Urun.Aciklama</td>
+                        <td>@item.Urun.Fiyat</td>
+                        <td>@item.IsletmeFiyat</td>
+                        <td>@item.Urun.Kategori.Ad</td>
+                        @if (item.Urun.IsAktif)
+                        {
+                            <td class="bg-success">
+
+                                <input class="border-danger" type="checkbox" name="isAktif" checked disabled />
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="bg-danger">
+
+                                <input class="border-danger" type="checkbox" name="isAktif"  disabled />
+                            </td>
+                        }
+
+                        <td><img src="@item.Urun.MediaPath" alt="@item.Urun.Ad" width="50" /></td>
+                        <td>
+                            @Html.ActionLink("Sil", "IsletmeUrunSil", new { id = item.KullaniciUrunId }, new { @class = "btn btn-danger" })
+
+                        </td>
+
+                    </tr>
+                    }
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Fiyat</th>
+                        <th>İşletme Fiyatı</th>
+                        <th>Kategorisi</th>
+                        <th>Aktif mi?</th>
+                        <th>Görsel</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+
+
+@section kategoriJs{
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+        });
+    </script>
+}
+

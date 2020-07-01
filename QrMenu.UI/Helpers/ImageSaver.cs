@@ -39,7 +39,9 @@ namespace QrMenu.UI.Helpers
                     string finalName = Path.Combine(filePath, newFileName);
                     if (File.Exists(finalName+"."+extansion))
                     {
-                        finalName = finalName + DateTime.Now.ToString("ddMMyyyy_HHmmss");
+                        string dateAddon= DateTime.Now.ToString("ddMMyyyy_HHmmss");
+                        finalName = finalName + dateAddon;
+                        newFileName = newFileName + dateAddon;
                     }
                     try
                     {
