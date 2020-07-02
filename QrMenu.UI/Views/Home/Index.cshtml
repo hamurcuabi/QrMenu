@@ -15,110 +15,141 @@
             <div class="col-md-12 dish-menu">
 
                 <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-                    @foreach (var item in kategoriList)
-                    {
-
-                        <a class="nav-link cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:50px; margin-bottom:10px;color:white;border:1px solid #fe8c00;padding:1px!important;width:160px;text-align:center;height:100px;background-image:url( @item.MediaPath);background-size:cover">
-
-
-                            @item.Ad
-                        </a>
-                    }
-                    @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>*@
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in kategoriList)
+                            {
+                                <div class="swiper-slide">
+                                    <a class="nav-link cursor-pointer" id="@item.Ad" data-toggle="pill" data-target="#@item.KategoriId" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:50px; margin-bottom:10px;color:white;border:1px solid #fe8c00;padding:1px!important;width:160px;text-align:center;height:100px;background-image:url( @item.MediaPath);background-size:cover">
 
 
-                </div>
-                <div class="container">
-                    <div class="row" id="mainItem">
+                        @item.Ad
+                    </a>
 
+                                </div>
+                            }
+                            @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>*@
+                        </div>
                     </div>
+                        </div>
+                        <div class="container">
+                            <div class="row" id="mainItem">
 
-                </div>
+                            </div>
 
-                <div class="tab-content py-5" id="v-pills-tabContent">
-                    @foreach (var kategori in kategoriList)
-                    {
-                        <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                            <div class="row">
-                                <div class="carousel owl-carousel ftco-owl">
+                        </div>
 
-
-
-                                    @foreach (var urun in Model.Where(f => f.Urun.KategoriId == kategori.KategoriId))
-                                    {
-                                        <div class="item text-center">
-                                            <div class="testimony-wrap p-4 pb-5" style="border-radius:30px!important;height:300px">
-                                                <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(@urun.Urun.MediaPath)"></div>
-                                                <div class="text">
-                                                    <p class="name" style="color:black">@urun.Urun.Ad</p>
+                        <div class="tab-content py-5" id="v-pills-tabContent">
+                            @foreach (var kategori in kategoriList)
+                            {
+                                <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="row">
+                                        <div class="carousel owl-carousel ftco-owl">
 
 
-                                                    <span class="position" style="color:black">@urun.IsletmeFiyat.ToString("C")</span>
-                                                    <i hidden>@urun.KullaniciUrunId</i>
+
+                                            @foreach (var urun in Model.Where(f => f.Urun.KategoriId == kategori.KategoriId))
+                                            {
+                                                <div class="item text-center">
+                                                    <div class="testimony-wrap p-4 pb-5" style="border-radius:30px!important;height:300px">
+                                                        <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(@urun.Urun.MediaPath)"></div>
+                                                        <div class="text">
+                                                            <p class="name" style="color:black">@urun.Urun.Ad</p>
+
+
+                                                            <span class="position" style="color:black">@urun.IsletmeFiyat.ToString("C")</span>
+                                                            <i hidden>@urun.KullaniciUrunId</i>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                @* <div class=" col-md-6 mr-1 menus d-flex ftco-animate" style="border-radius:10px">
+                                    <div class="menu-img" style="background-image: url(@urun.Urun.MediaPath);"></div>
+                                    <div class="text d-flex">
+                                        <div class="one-half">
+                                            <h3 style="text-align:center;margin-left:-30px">@urun.Urun.Ad</h3>
+                                            <p style="text-align:center;margin-left:-30px">@urun.Urun.Aciklama</p>
                                         </div>
-                                        @* <div class=" col-md-6 mr-1 menus d-flex ftco-animate" style="border-radius:10px">
-                                                <div class="menu-img" style="background-image: url(@urun.Urun.MediaPath);"></div>
-                                                <div class="text d-flex">
-                                                    <div class="one-half">
-                                                        <h3 style="text-align:center;margin-left:-30px">@urun.Urun.Ad</h3>
-                                                        <p style="text-align:center;margin-left:-30px">@urun.Urun.Aciklama</p>
-                                                    </div>
-                                                    <div class="one-forth w-0">
-                                                        <span class="price">@urun.IsletmeFiyat.ToString("C")</span>
-                                                    </div>
-                                                </div>
-                                            </div>*@
+                                        <div class="one-forth w-0">
+                                            <span class="price">@urun.IsletmeFiyat.ToString("C")</span>
+                                        </div>
+                                    </div>
+                                </div>*@
 
 
 
-                                    }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            @*<div class="tab-pane fade active show " id="menu" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="row">
+                    @foreach (var item in Model.MenuList)
+                    {
+
+                        <div class="menus d-flex ftco-animate col-lg-12" style="border-radius:10px">
+                            <div class="menu-img" style="background-image: url(@item.MediaPath);"></div>
+                            <div class="text d-flex">
+                                <div class="one-half">
+                                    <h3 style="text-align:center;margin-left:-30px">@item.Ad</h3>
+
+                                    <p style="text-align:center;margin-left:-30px">
+                                        @foreach (var item2 in menuUrunList.Where(f => f.MenuId == item.MenuId))
+                                        {
+                                            <span>
+                                                @item2.Urun.Ad
+                                            </span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">@item.Fiyat.ToString("C")</span>
                                 </div>
                             </div>
                         </div>
-
                     }
 
-                    @*<div class="tab-pane fade active show " id="menu" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                            <div class="row">
-                                @foreach (var item in Model.MenuList)
-                                {
-
-                                    <div class="menus d-flex ftco-animate col-lg-12" style="border-radius:10px">
-                                        <div class="menu-img" style="background-image: url(@item.MediaPath);"></div>
-                                        <div class="text d-flex">
-                                            <div class="one-half">
-                                                <h3 style="text-align:center;margin-left:-30px">@item.Ad</h3>
-
-                                                <p style="text-align:center;margin-left:-30px">
-                                                    @foreach (var item2 in menuUrunList.Where(f => f.MenuId == item.MenuId))
-                                                    {
-                                                        <span>
-                                                            @item2.Urun.Ad
-                                                        </span>
-                                                    }
-                                                </p>
-                                            </div>
-                                            <div class="one-forth">
-                                                <span class="price">@item.Fiyat.ToString("C")</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
 
 
-
-                            </div>
-                        </div>*@
                 </div>
-            </div>
+            </div>*@
+                        </div>
+                    </div>
         </div>
 
 
 @section indexJs{
     <script src="/Temp/js/owl.carousel.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 0,
+            slidesPerGroup: 1,
+            loop: false,
+            loopFillGroupWithBlank: false,
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 4,
+                    spaceBetween: 40
+                }
+            }
+           
+        });
+  
+    </script>
     <script>
     $(document).ready(function () {
     var Model = [];

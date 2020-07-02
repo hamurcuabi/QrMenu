@@ -46,6 +46,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                 model.Sifre = Guid.NewGuid().ToString();
                 bool result = repo.Create(model);
                 TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme eklenemedi." } };
+                ViewBag.IsletmeSifre = model.Sifre;
                 return RedirectToAction("Liste");
             }
         }

@@ -25,17 +25,26 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                    <tr>
+                        @if (item.Yetki != (int)EnumYetki.Admin)
+                        {
+                            /**/
+
                             <td>@item.KullaniciAdi</td>
-                           
-                           
+
+
                             <td>
-                                @Html.ActionLink("Sil", "Sil", new { id = item.KullaniciId}, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("Sil", "Sil", new { id = item.KullaniciId }, new { @class = "btn btn-danger" })
                                 @Html.ActionLink("Güncelle", "Guncelle", new { id = item.KullaniciId }, new { @class = "btn btn-primary" })
                                 @Html.ActionLink("İşletme Ürünleri", "IsletmeUrunListe", "Isletme", new { id = item.KullaniciId }, new { @class = "btn btn-warning" })
-                            </td>
+                                @{
+                                    string pass = item.Sifre;
+                                    <button onclick="showpass(pass='@pass')" class="btn btn-dark"> Şifre Gör</button>
 
-                        </tr>
+                                }
+                            </td>
+                        }
+                    </tr>
                     }
 
 
@@ -64,5 +73,11 @@
                 "autoWidth": false,
             });
         });
+
+        function showpass(pass) {
+            alert("Kullanıcının şifresi = "+pass);
+        }
+
+
     </script>
 }

@@ -31,7 +31,7 @@ namespace QrMenu.UI.Helpers
                        name= namer.ConvertTRCharToENChar(name);
                     }
                     string newFileName = name+"_"+ imageName;
-                    string filePath = HttpContext.Current.Server.MapPath("~/Medias/" + name);
+                    string filePath = HttpContext.Current.Server.MapPath("/Medias/" + name);
                     if (!Directory.Exists(filePath))
                     {
                         Directory.CreateDirectory(filePath);
