@@ -3432,6 +3432,8 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Medias\favicon.ico" />
+    <Content Include="Medias\logo.png" />
     <Content Include="Temp\css\ajax-loader.gif" />
     <Content Include="Temp\css\animate.css" />
     <Content Include="Temp\css\aos.css" />
@@ -3896,7 +3898,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Medias\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.d.ts" />
