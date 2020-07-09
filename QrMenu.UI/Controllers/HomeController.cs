@@ -61,6 +61,7 @@ namespace QrMenu.UI.Controllers
             
         }
 
+        
         public ActionResult Landing()
         {
             return View();

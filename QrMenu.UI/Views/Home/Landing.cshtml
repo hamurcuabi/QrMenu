@@ -13,25 +13,21 @@
     </div>
 </div>
 
-<script>
-
-    let scanner = new Instascan.Scanner(
-        {
-            video: document.getElementById('preview')
-        }
-    );
+@section landingJs{
+<script type="text/javascript">
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
-        //alert('Escaneou o conteudo: ' + content);
-        //window.open(content);
-        window.open(content,"_self")
+         window.open(content,"_self")
     });
-    Instascan.Camera.getCameras().then(cameras => {
+    Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
         } else {
             console.error("Kamera Bulunamadı");
         }
+    }).catch(function (e) {
+        console.error(e);
     });
-
 </script>
 
+    }

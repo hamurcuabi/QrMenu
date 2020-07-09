@@ -212,10 +212,6 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap-switch\css\bootstrap3\bootstrap-switch.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap-switch\js\bootstrap-switch.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap-switch\js\bootstrap-switch.min.js" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap4-duallistbox\bootstrap-duallistbox.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap4-duallistbox\bootstrap-duallistbox.min.css" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap4-duallistbox\jquery.bootstrap-duallistbox.js" />
-    <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap4-duallistbox\jquery.bootstrap-duallistbox.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\bootstrap\js\bootstrap.js" />
@@ -3900,6 +3896,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Medias\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Areas\Admin\Temp\adminlte\plugins\fullcalendar-bootstrap\main.d.ts" />
