@@ -3771,6 +3771,7 @@
     <Content Include="Areas\Admin\Views\Urun\Liste.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Isletme\IsletmeUrunEkle.cshtml" />
+    <Content Include="Areas\Admin\Views\Isletme\Guncelle.cshtml" />
     <None Include="packages.config" />
     <Content Include="Temp\css\.DS_Store" />
     <Content Include="Temp\css\bootstrap\.DS_Store" />

@@ -15,7 +15,6 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         // GET: Admin/Kullanici
         [AdminFilter]
         [UserFilter]
-
         public ActionResult Liste()
         {
             using (KullaniciRepository repo = new KullaniciRepository())
@@ -67,13 +66,22 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             }
         }
 
+        
+        //public ActionResult IsletmeSifreGuncelle()
+        //{
+        //    Kullanici kullanici = Session["loginSU"] as Kullanici;
+
+           
+
+        //}
+
 
         
         [AdminFilter]
-        public ActionResult Guncelle(int id)
+        public ActionResult Guncelle(int? id)
         {
             Kullanici kullanici = Session["loginSU"] as Kullanici;
-            if (id==kullanici.KullaniciId)
+            if (kullanici.Yetki==(int)EnumYetki.Admin)
             {
                 using (KullaniciRepository repo = new KullaniciRepository())
                 {
@@ -82,32 +90,51 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                     return View(model);
                 }
             }
-            return RedirectToAction("Index", "Main");
+            else
+            {
+                using (KullaniciRepository repo = new KullaniciRepository())
+                {
+                    Kullanici model = repo.GetOne(f => f.KullaniciId == kullanici.KullaniciId);
+
+                    return View(model);
+                }
+            }
+
+            //return RedirectToAction("Index", "Main");
 
 
 
         }
 
         [HttpPost]
+       
         [AdminFilter]
-        public ActionResult Guncelle(Kullanici model,string yeniSifre)
+        public ActionResult Guncelle(Kullanici model,string yeniSifre,int number,int number2)
         {
             Kullanici kullanici = Session["loginSU"] as Kullanici;
-            if (model.Sifre != kullanici.Sifre)
-            {
-                TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Şifre Hatalı" } };
-                return RedirectToAction("Guncelle",new {id=model.KullaniciId });
-            }
-            else
-            {
+            
                 using (KullaniciRepository repo = new KullaniciRepository())
                 {
+                    model.Sifre = yeniSifre;
+                    model.KullaniciId = number;
+                   
+               
+                    if (model.KullaniciId==kullanici.KullaniciId)
+                    {
+                        kullanici.Sifre = yeniSifre;
 
-                    bool result = repo.Create(model);
-                    TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme Güncellendi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme Güncellenemedi" } };
+                        Session["loginSu"] = kullanici;
+                }
+                if (number2!=(int)EnumYetki.Admin)
+                {
+                    model.Yetki = (int)EnumYetki.Isletme;
+                }
+                bool result = repo.Update(model);
+                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme Güncellendi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme Güncellenemedi" } };
+                  
                     return RedirectToAction("Liste");
                 }
-            }
+            
             
 
 

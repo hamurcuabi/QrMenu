@@ -100,6 +100,57 @@ namespace QrMenu.UI.Areas.Admin.Controllers
             }
         }
 
+        
+        [AdminFilter]
+        public ActionResult Guncelle()
+        {
+            Kullanici kullanici = Session["loginSU"] as Kullanici;
+
+            using (KullaniciRepository repo = new KullaniciRepository())
+            {
+                Kullanici model = repo.GetOne(f => f.KullaniciId == kullanici.KullaniciId);
+
+                return View(model);
+            }
+
+        }
+
+
+        [HttpPost]
+
+        [AdminFilter]
+        public ActionResult Guncelle(Kullanici model, string yeniSifre)
+        {
+            Kullanici kullanici = Session["loginSU"] as Kullanici;
+
+            using (KullaniciRepository repo = new KullaniciRepository())
+            {
+                model.KullaniciAdi = kullanici.KullaniciAdi;
+                model.Sifre = yeniSifre;
+                model.KullaniciId = kullanici.KullaniciId;
+                model.Yetki = kullanici.Yetki;
+
+                bool result = repo.Update(model);
+               
+                    kullanici.Sifre = yeniSifre;
+
+                    Session["loginSu"] = kullanici;
+                
+
+                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme Güncellendi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme Güncellenemedi" } };
+               
+                    return RedirectToAction("Index", "Main");
+                
+                
+            }
+
+
+
+
+
+        }
+
+
 
 
 

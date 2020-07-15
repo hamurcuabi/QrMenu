@@ -1,9 +1,9 @@
 ﻿@using QrMenu.MODEL
 @model Kullanici
 @{
-    ViewBag.Title = "Ekle";
+    ViewBag.Title = "Güncelle";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
- 
+
 
 }
 <section class="content">
@@ -11,20 +11,15 @@
         @Html.Partial("_PartialMessage")
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Kullanıcı Güncelle</h3>
+                <h3 class="card-title">İşletme Güncelle</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
             <form enctype="multipart/form-data" method="post" action="">
-                <input type="number" name="number" value="@Model.KullaniciId" hidden />
-                <input type="number" name="number2" value="@Model.Yetki" hidden />
+                @*<input type="number" name="number" value="@Model.KullaniciId" hidden />*@
 
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="Adi">Kullanıcı Adı</label>
-                        <input type="text" class="form-control" name="KullaniciAdi" value="@Model.KullaniciAdi" id="Adi">
-                    </div>
-
+                    
                     <div class="form-group">
                         <label for="Sifre">Eski Sifre</label>
                         <input type="password" class="form-control" name="eskiSifre" id="eskiSifre">
