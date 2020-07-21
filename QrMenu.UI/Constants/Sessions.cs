@@ -8,5 +8,6 @@ namespace QrMenu.UI.Constants
     public class Sessions
     {
         public static readonly String LoginSession = "loginSU";
+        public static readonly int TimeOut = 60;
     }
 }

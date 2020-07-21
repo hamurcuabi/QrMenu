@@ -71,6 +71,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                 if (user != null)
                 {
                     Session[Sessions.LoginSession] = user;
+                    Session.Timeout = Sessions.TimeOut;
                     return RedirectToAction("Index");
                 }
                 TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Hatalı kullanıcı Adı/Şifre" } };
