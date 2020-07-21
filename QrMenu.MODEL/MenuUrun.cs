@@ -7,7 +7,8 @@ using QrMenu.MODEL;
 
 namespace QrMenu.MODEL
 {
-   public class MenuUrun
+    [Serializable]
+    public class MenuUrun
     {
         [Key]
         public int MenuUrunId { get; set; }

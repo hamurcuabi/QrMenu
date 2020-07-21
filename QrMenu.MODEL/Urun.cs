@@ -22,7 +22,7 @@ namespace QrMenu.MODEL
         public String Kodu { get; set; }
         [DefaultValue(true)]
         public Boolean IsAktif { get; set; }
-        public decimal Fiyat { get; set; }
+        public decimal? Fiyat { get; set; }
 
         
         [ForeignKey("KategoriId")]

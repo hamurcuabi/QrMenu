@@ -20,7 +20,7 @@
                    
                     <div class="form-group">
                         <label>Kategori</label>
-                        <select class="form-control select2" style="width: 100%;" name="KategoriId" id="kategoriSec">
+                        <select class="form-control select2" style="width: 100%;" name="KategoriId" required id="kategoriSec">
                             <option selected="selected" disabled>Kategori Seçin</option>
                             @foreach (var item in kategoriList)
                             {
@@ -31,7 +31,7 @@
                   
                     <div class="form-group">
                         <label>Ürün</label>
-                        <select class="form-control select2" style="width: 100%;" id="urunSec" name="UrunId">
+                        <select class="form-control select2" style="width: 100%;" id="urunSec" required name="UrunId">
                             <option selected="selected" disabled>Ürün Seçin</option>
                             
                         </select>

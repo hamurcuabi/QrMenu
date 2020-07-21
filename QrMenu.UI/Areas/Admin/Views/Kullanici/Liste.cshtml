@@ -33,7 +33,7 @@
                                 @Html.ActionLink("Sil", "Sil", new { id = item.KullaniciId }, new { @class = "btn btn-danger" })
                                 @Html.ActionLink("Güncelle", "Guncelle", new { id = item.KullaniciId }, new { @class = "btn btn-primary" })
                                 @Html.ActionLink("İşletme Ürünleri", "IsletmeUrunListe", "Isletme", new { id = item.KullaniciId }, new { @class = "btn btn-warning" })
-                                <button class="btn btn-dark"onclick="showpass(id='@item.KullaniciId')">Bilgi Gör</button>
+                                <button class="btn btn-dark"onclick="showpass(pass='@item.Sifre',id='@item.KullaniciId')">Bilgi Gör</button>
                             </td>
 
 
@@ -60,8 +60,8 @@
 
 @section kategoriJs{
     <script>
-        function showpass(id) {
-            alert("İşletme ID  = " + id);
+        function showpass(pass, id) {
+            alert("İşletme şifresi = " + pass + " İşletme ID  = " + id);
         }
         $(function () {
             $("#example1").DataTable({

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace QrMenu.MODEL
 {
-   public class IsletmeAyar
+    [Serializable]
+    public class IsletmeAyar
     {
         [Key]
         public int IsletmeAyarId { get; set; }

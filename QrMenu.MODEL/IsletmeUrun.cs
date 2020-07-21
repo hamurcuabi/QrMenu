@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QrMenu.MODEL
 {
+    [Serializable]
     public class IsletmeUrun
     {
         [Key]

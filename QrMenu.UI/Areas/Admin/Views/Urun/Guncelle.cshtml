@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="UrnAd">Kategori Adı</label>
-                        <input type="text" class="form-control" name="Ad" value="@Model.Ad" id="UrnAd">
+                        <input type="text" class="form-control" required name="Ad" value="@Model.Ad" id="UrnAd">
                     </div>
                     <div class="form-group">
                         <label>Açıklama</label>
@@ -29,8 +29,8 @@
                     </div>
                     <div class="form-group">
                         <label>Kategori</label>
-                        <select class="form-control select2" style="width: 100%;" name="KategoriId">
-                            <option selected="selected" disabled>Kategori Seçin</option>
+                        <select class="form-control select2"  required style="width: 100%;" name="KategoriId">
+                            <option selected="selected"  disabled>Kategori Seçin</option>
                             @foreach (var item in kategoriList)
                             {
                                 <option value="@item.KategoriId">@item.Ad</option>

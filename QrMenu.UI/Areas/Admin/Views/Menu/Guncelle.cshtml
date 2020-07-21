@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="MenuAd">Menü Adı</label>
-                        <input type="text" class="form-control" name="Ad" id="MenuAd">
+                        <input type="text" required class="form-control" name="Ad" id="MenuAd">
                     </div>
                     <div class="form-group">
                         <label>Açıklama</label>
@@ -28,11 +28,11 @@
                     </div>
                     <div class="form-group">
                         <label for="MenuFiyat">Menü Fiyatı</label>
-                        <input type="text" class="form-control" name="Fiyat" id="MenuFiyat">
+                        <input type="text" class="form-control" name="Fiyat" required id="MenuFiyat">
                     </div>
                     <div class="form-group">
                         <label>Multiple</label>
-                        <select class="select2" multiple="multiple" data-placeholder="Ürün Seçin" name="urunler" style="width: 100%;">
+                        <select class="select2" multiple="multiple" data-placeholder="Ürün Seçin" required name="urunler" style="width: 100%;">
                             @foreach (var item in urunList)
                             {
                                 <option value="@item.UrunId">@item.Ad</option>

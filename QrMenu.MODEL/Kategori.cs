@@ -6,6 +6,7 @@ using System.Text;
 
 namespace QrMenu.MODEL
 {
+    [Serializable]
     public class Kategori
     {
         [Key]
