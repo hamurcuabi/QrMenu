@@ -21,7 +21,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Index()
         {
-            Kullanici user = Session["loginSU"] as Kullanici;
+            Kullanici user = Session[Sessions.LoginSession] as Kullanici;
             KategoriMenuUrunKullaniciModel model = new KategoriMenuUrunKullaniciModel();
             if (user.Yetki==(int)EnumYetki.Admin)
             {

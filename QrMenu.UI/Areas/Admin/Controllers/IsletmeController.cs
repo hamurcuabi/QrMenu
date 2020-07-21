@@ -1,6 +1,7 @@
 ﻿using QrMenu.BLL;
 using QrMenu.MODEL;
 using QrMenu.UI.Areas.Admin.Models;
+using QrMenu.UI.Constants;
 using QrMenu.UI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -81,7 +82,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                Kullanici kullanici = Session["loginSU"] as Kullanici;
+                Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
                 using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
                 {
                     ICollection<IsletmeUrun> model = repo.IsletmeninUrunleri(kullanici.KullaniciId);
@@ -104,7 +105,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Guncelle()
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
 
             using (KullaniciRepository repo = new KullaniciRepository())
             {
@@ -121,7 +122,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Guncelle(Kullanici model, string yeniSifre)
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
 
             using (KullaniciRepository repo = new KullaniciRepository())
             {
@@ -134,7 +135,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                
                     kullanici.Sifre = yeniSifre;
 
-                    Session["loginSu"] = kullanici;
+                    Session[Sessions.LoginSession] = kullanici;
                 
 
                 TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "İşletme Güncellendi" } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "İşletme Güncellenemedi" } };
@@ -157,7 +158,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult IsletmeUrunSil(int id)
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
             using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
             {
                 bool result = repo.Delete(id);
@@ -169,7 +170,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult IsletmeUrunEkle()
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
             using (UrunRepository repo = new UrunRepository())
             {
                 var model = repo.GetList();
@@ -184,7 +185,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         public void IsletmeUrunEkle(/*int[] model,string[] obj*/ string model)
         {
             IsletmeUrunEkleModel b = (IsletmeUrunEkleModel)Newtonsoft.Json.JsonConvert.DeserializeObject(model, typeof(IsletmeUrunEkleModel));
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
             //List<int> eklenecekler = new List<int>();
             using (IsletmeUrunRepository repo = new IsletmeUrunRepository())
             {

@@ -1,9 +1,8 @@
 ﻿@using QrMenu.MODEL
-
-
+@using QrMenu.UI.Constants
 @{
 
-    Kullanici user = Session["loginSU"] as Kullanici;
+    Kullanici user = Session[Sessions.LoginSession] as Kullanici;
 
 }
 <!DOCTYPE html>

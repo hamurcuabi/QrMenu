@@ -1,6 +1,7 @@
 ﻿using QrMenu.BLL;
 
 using QrMenu.MODEL;
+using QrMenu.UI.Constants;
 using QrMenu.UI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         
         //public ActionResult IsletmeSifreGuncelle()
         //{
-        //    Kullanici kullanici = Session["loginSU"] as Kullanici;
+        //    Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
 
            
 
@@ -80,7 +81,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Guncelle(int? id)
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
             if (kullanici.Yetki==(int)EnumYetki.Admin)
             {
                 using (KullaniciRepository repo = new KullaniciRepository())
@@ -111,7 +112,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         public ActionResult Guncelle(Kullanici model,string yeniSifre,int number,int number2)
         {
-            Kullanici kullanici = Session["loginSU"] as Kullanici;
+            Kullanici kullanici = Session[Sessions.LoginSession] as Kullanici;
             
                 using (KullaniciRepository repo = new KullaniciRepository())
                 {
@@ -123,7 +124,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                     {
                         kullanici.Sifre = yeniSifre;
 
-                        Session["loginSu"] = kullanici;
+                        Session[Sessions.LoginSession] = kullanici;
                 }
                 if (number2!=(int)EnumYetki.Admin)
                 {
