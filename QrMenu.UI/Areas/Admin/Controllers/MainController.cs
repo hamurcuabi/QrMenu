@@ -1,6 +1,7 @@
 ﻿using QrMenu.BLL;
 using QrMenu.MODEL;
 using QrMenu.UI.Areas.Admin.Models;
+using QrMenu.UI.Constants;
 using QrMenu.UI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                 Kullanici user = repo.CheckUser(model);
                 if (user != null)
                 {
-                    Session["loginSU"] = user;
+                    Session[Sessions.LoginSession] = user;
                     return RedirectToAction("Index");
                 }
                 TempData["Message"] = new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Hatalı kullanıcı Adı/Şifre" } };

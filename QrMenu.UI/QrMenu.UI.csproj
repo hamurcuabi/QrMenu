@@ -3550,6 +3550,7 @@
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\UrunController.cs" />
     <Compile Include="Areas\Admin\Models\KategoriMenuUrunKullaniciModel.cs" />
+    <Compile Include="Constants\Sessions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
