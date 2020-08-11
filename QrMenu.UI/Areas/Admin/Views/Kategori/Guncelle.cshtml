@@ -29,8 +29,8 @@
                         <label for="exampleInputFile">Kategori Görseli</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" value="" name="MediaPath" id="KatMedia">
-                                <label class="custom-file-label" for="KatMedia"></label>
+                                <input type="file" class="custom-file-input" value="" name="image" id="KatMedia">
+                                <label class="custom-file-label" for="KatMedia" id="KatMediaLabel">@Model.MediaPath</label>
                             </div>
                         </div>
                     </div>
@@ -46,3 +46,16 @@
 
     </div>
 </section>
+
+
+
+@section ekleJs{
+    <script>
+        $(document).ready(function(){
+            $("#KatMedia").change(function(){
+                $("#KatMediaLabel").text($("#KatMedia").val());
+            })
+        })
+
+</script>
+}

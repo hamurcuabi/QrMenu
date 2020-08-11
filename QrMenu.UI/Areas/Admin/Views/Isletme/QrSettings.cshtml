@@ -1,0 +1,26 @@
+﻿@model QrMenu.MODEL.Kullanici
+@{
+    ViewBag.Title = "QrSettings";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<input type="text" id="shop" hidden value="@Model.KullaniciId" />
+<section>
+    <div class=" container"  >
+        <div class="row">
+
+            <div id="qrcode" class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-5"></div>
+            <div class="col-12 col-md-12">
+                <a href="#" onclick="this.href = $('#qrcode img:first').attr('src');" style="margin-left:43%;margin-top:20px" class=" btn  btn-outline-success" download>İndir</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="~/Areas/Admin/Temp/adminlte/plugins/qrcodejs/qrcode.min.js"></script>
+<script>
+    var shopNm = document.getElementById("shop").value;
+    new QRCode(document.getElementById("qrcode"), "http://qr2f.com/qrmenu/" + shopNm);
+</script>
+

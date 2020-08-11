@@ -108,17 +108,22 @@ namespace QrMenu.UI.Areas.Admin.Controllers
         [AdminFilter]
         [UserFilter]
         [HttpPost]
-        public ActionResult Guncelle(Kategori model,int number,string OldMedia)
+        public ActionResult Guncelle(Kategori model,int number,string OldMedia,HttpPostedFileBase[] image)
         {
-            if (model.MediaPath==null)
+            if (image[0]==null)
             {
                 model.MediaPath = OldMedia;
+            }
+            else
+            {
+                var saveResult = ImageSaver.SaveImage(image, model.Ad).FirstOrDefault();
+                model.MediaPath = saveResult;
             }
             using (KategoriRepository repo = new KategoriRepository())
             {
                 model.KategoriId = number;
                 bool result= repo.Update(model);
-                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategroi eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategroi eklenemedi." } };
+                TempData["Message"] = result == true ? new TempDataDictionary { { "class", "alert alert-success" }, { "msg", "Kategori eklendi." } } : new TempDataDictionary { { "class", "alert alert-danger" }, { "msg", "Kategori eklenemedi." } };
                 return RedirectToAction("Liste");
             }
 

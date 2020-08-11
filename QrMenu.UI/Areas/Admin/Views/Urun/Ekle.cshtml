@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label>Açıklama</label>
-                        <textarea class="form-control"  rows="3" name="Aciklama"></textarea>
+                        <textarea class="form-control" rows="3" name="Aciklama"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Kategori</label>
@@ -43,7 +43,7 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required name="images" id="UrnMedia">
-                                <label class="custom-file-label" for="exampleInputFile">Görsel Seç</label>
+                                <label class="custom-file-label" id="UrnMediaLabel" for="exampleInputFile">Görsel Seç</label>
                             </div>
                         </div>
                     </div>
@@ -60,3 +60,14 @@
 
     </div>
 </section>
+
+@section ekleJs{
+    <script>
+        $(document).ready(function(){
+            $("#UrnMedia").change(function(){
+                $("#UrnMediaLabel").text($("#UrnMedia").val());
+            })
+        })
+      
+    </script>
+}

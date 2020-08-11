@@ -17,11 +17,11 @@
     <AssemblyName>QrMenu.UI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44313</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -3179,6 +3179,7 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\popper\umd\popper-utils.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\popper\umd\popper.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\popper\umd\popper.min.js" />
+    <Content Include="Areas\Admin\Temp\adminlte\plugins\qrcodejs\qrcode.min.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\raphael\.eslintrc.js" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\raphael\dev\banner.txt" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\raphael\dev\raphael.amd.js" />
@@ -3432,8 +3433,6 @@
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.css" />
     <Content Include="Areas\Admin\Temp\adminlte\plugins\toastr\toastr.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Medias\favicon.ico" />
-    <Content Include="Medias\logo.png" />
     <Content Include="Temp\css\ajax-loader.gif" />
     <Content Include="Temp\css\animate.css" />
     <Content Include="Temp\css\aos.css" />
@@ -3773,6 +3772,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Isletme\IsletmeUrunEkle.cshtml" />
     <Content Include="Areas\Admin\Views\Isletme\Guncelle.cshtml" />
+    <Content Include="Areas\Admin\Views\Isletme\QrSettings.cshtml" />
     <None Include="packages.config" />
     <Content Include="Temp\css\.DS_Store" />
     <Content Include="Temp\css\bootstrap\.DS_Store" />

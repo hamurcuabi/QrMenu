@@ -219,6 +219,18 @@ namespace QrMenu.UI.Areas.Admin.Controllers
                 //return RedirectToAction("IsletmeUrunEkle");
             }
         }
+
+
+        [AdminFilter]
+        public ActionResult QrSettings(int id)
+        {
+            using (KullaniciRepository repo = new KullaniciRepository())
+            {
+                var kullanici = repo.GetOne(f => f.KullaniciId == id);
+                return View(kullanici);
+            }
+           
+        }
     }
 
 }
