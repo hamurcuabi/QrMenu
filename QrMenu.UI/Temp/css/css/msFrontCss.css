@@ -1,4 +1,21 @@
-﻿.mainFrame {
+﻿.list-ms{
+    margin-top:60px!important;
+}
+.text-ms{
+    font-size:24px!important;
+    color:black
+}
+@media (max-width:1024px){
+    .text-ms {
+        font-size: x-large!important;
+        color: black!important;
+    }
+    .list-ms {
+        margin-top: 0px!important;
+    }
+}
+
+.mainFrame {
     border: unset !important;
     background: #fe8c00 !important;
     border-radius: 30px;

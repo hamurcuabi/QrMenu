@@ -12,9 +12,9 @@
 }
 
         <div class="row">
-            <div class="col-md-12 dish-menu">
+            <div class="col-md-12 dish-menu list-ms" @*style="margin-top:60px"*@>
 
-                <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                @*<div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                     @foreach (var item in kategoriList)
                     {
@@ -25,33 +25,33 @@
                             @item.Ad
                         </a>
                     }
-                    @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>*@
+                    @*<a class="nav-link py-3 px-4 active show cursor-pointer " id="menuler" data-toggle="pill" href="#menu" role="tab" aria-controls="v-pills-home" aria-selected="true" style="border-radius:10px; margin-bottom:10px"><span class="flaticon-meat"></span>Hazır Menüler</a>
 
 
-                </div>
-                <div class="container">
+                </div>*@
+                <div class="container mb-5">
                     <div class="row" id="mainItem">
 
                     </div>
 
                 </div>
 
-                <div class="tab-content py-5" id="v-pills-tabContent">
+                @*<div class="tab-content py-5" id="v-pills-tabContent">
                     @foreach (var kategori in kategoriList)
                     {
-                        <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="tab-pane fade " id="@kategori.KategoriId" role="tabpanel" aria-labelledby="v-pills-home-tab">*@
                             <div class="row">
                                 <div class="carousel owl-carousel ftco-owl">
 
 
 
-                                    @foreach (var urun in Model.Where(f => f.Urun.KategoriId == kategori.KategoriId))
+                                    @foreach (var urun in Model)
                                     {
                                         <div class="item text-center">
-                                            <div class="testimony-wrap p-4 pb-5" style="border-radius:30px!important;height:300px">
-                                                <div class="user-img mb-4" style="margin-top:0!important;;background-image: url(@urun.Urun.MediaPath)"></div>
+                                            <div class="testimony-wrap p-4 pb-2" style="border-radius:30px!important;height:300px">
+                                                <div class="user-img mb-4" style="margin-top:0!important;margin-bottom:0!important;background-image: url(@urun.Urun.MediaPath)"></div>
                                                 <div class="text">
-                                                    <p class="name" style="color:black">@urun.Urun.Ad</p>
+                                                    <p class="name text-ms" @*style="color:black;font-size:large"*@>@urun.Urun.Ad</p>
 
 
                                                     <span class="position" style="color:black">@urun.IsletmeFiyat.ToString("C")</span>
@@ -76,10 +76,10 @@
 
                                     }
                                 </div>
-                            </div>
-                        </div>
+                            @*</div>
+                        </div>*@
 
-                    }
+                    @*}*@
 
                     @*<div class="tab-pane fade active show " id="menu" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div class="row">
@@ -140,7 +140,7 @@
         if (v["KullaniciUrunId"] == id) {
          
 
-    $("#mainItem").append(' <div class="col-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 item text-center " style="margin-top: 140px;"><div class="testimony-wrap p-4 pb-5 mainFrame"><div class="user-img mb-4" style="margin-bottom: 80px!important;margin-top:0!important;;background-image: url('+v["Urun"]["MediaPath"]+')"></div><div class="text"><p class="name">'+v["Urun"]["Ad"]+'</p><p class="mb-5">'+v["Urun"]["Aciklama"]+'</p><span class="position"><span>₺'+v["IsletmeFiyat"]+'</span></div></div></div>');
+    $("#mainItem").append(' <div class="col-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 item text-center " style="margin-top: 50px;"><div class="testimony-wrap p-4 pb-2 mainFrame"><div class="user-img mb-4" style="margin-bottom:60px!important;margin-top:0!important;background-image: url('+v["Urun"]["MediaPath"]+')"></div><div class="text"><p class="name">'+v["Urun"]["Ad"]+'</p><p class="mb-5">'+v["Urun"]["Aciklama"]+'</p><span class="position"><span>₺'+v["IsletmeFiyat"]+'</span></div></div></div>');
     }
     })
     
